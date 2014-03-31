@@ -35,13 +35,12 @@ public class ApacheHttpRequest {
         HttpEntity entity = resp.getEntity();
 
         //EntityUtils.consume(entity);
-
-
+        /*
         Header[] headers = resp.getAllHeaders();
         for (Header header : headers) {
             System.out.println(header.getName() + " " + header.getValue());
         }
-
+        */
 
         long totalTime = System.nanoTime() - startTime;
         System.out.println(1.0*totalTime/1000000);
