@@ -61,7 +61,6 @@ public class JavaPerformance {
                 for (int i =0; i<TIMES; i++) {
                     ApacheHttpRequest.getTrades(httpClient, 10);
                 }
-
                 System.out.println("\nGet 50 trades:");
                 for (int i =0; i<TIMES; i++) {
                     ApacheHttpRequest.getTrades(httpClient, 50);
@@ -69,6 +68,10 @@ public class JavaPerformance {
                 System.out.println("\nGet 100 trades:");
                 for (int i =0; i<TIMES; i++) {
                     ApacheHttpRequest.getTrades(httpClient, 100);
+                }
+                System.out.println("\nGet 250 trades:");
+                for (int i =0; i<TIMES; i++) {
+                    ApacheHttpRequest.getTrades(httpClient, 250);
                 }
                 System.out.println("\nGet 500 trades:");
                 for (int i =0; i<TIMES; i++) {
