@@ -27,11 +27,11 @@ import java.util.List;
 public class ApacheHttpRequest {
     public static JSONObject makeRequest(DefaultHttpClient httpClient, HttpUriRequest request) throws Exception {
         Thread.sleep(100);
+
         // Time the latency
         long startTime = System.nanoTime();
 
         HttpResponse resp = httpClient.execute(request);
-
         HttpEntity entity = resp.getEntity();
 
         //EntityUtils.consume(entity);
@@ -41,7 +41,6 @@ public class ApacheHttpRequest {
             System.out.println(header.getName() + " " + header.getValue());
         }
         */
-
         long totalTime = System.nanoTime() - startTime;
         System.out.println(1.0*totalTime/1000000);
 

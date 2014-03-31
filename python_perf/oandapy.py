@@ -219,6 +219,9 @@ class API(EndpointsMixin, object):
 
         content = json.loads(content)
         
+        if response.status_code == 429:
+            print ("RATE LIMITED")
+
         # error message
         if response.status_code >= 400:
             raise OandaError(content)

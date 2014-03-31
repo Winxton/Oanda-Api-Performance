@@ -66,7 +66,7 @@ public class UrlConnectionRequest {
     }
 
     public static JSONObject closeTrade(int tradeId) throws IOException {
-        String url = "https://api-fxpractice.oanda.com/v1/accounts/3922748/trades"+tradeId;
+        String url = "https://api-fxpractice.oanda.com/v1/accounts/3922748/trades/"+tradeId;
         HttpURLConnection connection = (HttpURLConnection)new URL(url).openConnection();
         connection.setDoInput(true);
         connection.setRequestProperty("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22");

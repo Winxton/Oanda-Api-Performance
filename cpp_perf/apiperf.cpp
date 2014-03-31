@@ -11,6 +11,7 @@
 #include <sstream>
 #include <chrono>
 
+#include <unistd.h>
 #include "cJSON.h"
 using namespace Poco;
 using namespace Poco::Net;
