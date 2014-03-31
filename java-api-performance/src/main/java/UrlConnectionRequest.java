@@ -7,6 +7,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by wwu on 28/03/14.
@@ -18,11 +20,11 @@ public class UrlConnectionRequest {
 
         InputStream response = connection.getInputStream();
 
-        long totalTime = System.nanoTime() - startTime;
-        System.out.println(1.0*totalTime/1000000);
-
         BufferedReader br = new BufferedReader(new InputStreamReader(response));
         JSONObject jsonObj = (JSONObject) JSONValue.parse(br);
+
+        long totalTime = System.nanoTime() - startTime;
+        System.out.println(1.0*totalTime/1000000);
         return jsonObj;
     }
 

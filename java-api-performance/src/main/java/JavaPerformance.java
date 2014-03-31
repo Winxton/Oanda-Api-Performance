@@ -34,7 +34,7 @@ public class JavaPerformance {
         DefaultHttpClient httpClient = new DefaultHttpClient();
 
         try {
-            int TIMES = 50;
+            int TIMES = 5;
 
             if (args.length == 1) {
                 TIMES = Integer.parseInt(args[0]);
