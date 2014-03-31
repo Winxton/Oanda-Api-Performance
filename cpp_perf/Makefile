@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -W -lPocoNetSSL -std=c++0x -pedantic \
+CXXFLAGS = -Wall -W -lPocoNetSSL -lPocoNet -std=c++0x -pedantic \
 
 EXEC = perfcpp
 OBJECTS = apiperf.o cJSON.o
