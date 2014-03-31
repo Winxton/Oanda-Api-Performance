@@ -65,6 +65,7 @@ void closeTrades(HTTPSClientSession &session, int trade_id) {
     ostringstream oss;
     oss << session.receiveResponse(res).rdbuf();
     //cout << oss.str() << endl;
+    cJSON *root = cJSON_Parse(oss.str().c_str());
 
     auto finishInd = std::chrono::high_resolution_clock::now();
     cout << 1.0*std::chrono::duration_cast<std::chrono::nanoseconds>(finishInd-startInd).count()/1000000 << "\n";
@@ -90,7 +91,7 @@ void getTrades(HTTPSClientSession &session, int numTrades) {
     // print response
     ostringstream oss;
     oss << session.receiveResponse(res).rdbuf();
-    string s = oss.str();
+    cJSON *root = cJSON_Parse(oss.str().c_str());
     //cout << s << endl;
     
     auto finishInd = std::chrono::high_resolution_clock::now();
