@@ -17,7 +17,7 @@ if len(sys.argv) == 2:
 
 	print ("waiting...")
 	time.sleep(1)
-	
+
 	# OPEN AND CLOSE TRADES
 	print "open and close trades"
 	closetrades.run(oanda, trials);
@@ -30,10 +30,7 @@ if len(sys.argv) == 2:
 
 	print ("\n100 trades")
 	gettrades.run(oanda, trials, trades=100)
-
-	print ("\n250 trades")
-	gettrades.run(oanda, trials, trades=250)
-
+	
 	print ("\n500 trades")
 	gettrades.run(oanda, trials, trades=500)
 

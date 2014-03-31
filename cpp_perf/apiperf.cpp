@@ -142,13 +142,6 @@ int main (int argc, char* argv[]) {
                 getTrades(session, 100);
             }
 
-            cout << "GET 250 TRADES" << endl;
-            for (int i = 0 ; i < NUM_REQ ; i++)
-            {
-                getTrades(session, 100);
-            }
-
-
             cout << "GET 500 TRADES" << endl;
             for (int i = 0 ; i < NUM_REQ ; i++)
             {

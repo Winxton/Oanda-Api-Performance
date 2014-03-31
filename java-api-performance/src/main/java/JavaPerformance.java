@@ -29,57 +29,53 @@ import org.json.simple.JSONValue;
 
 public class JavaPerformance {
 
-    public static void main (String[]args) throws IOException, InterruptedException {
+    public static void main (String[]args) throws Exception {
 
         DefaultHttpClient httpClient = new DefaultHttpClient();
 
-
-
         try {
+            int TIMES = 1;
+
             if (args.length == 1) {
-
-                final int TIMES = Integer.parseInt(args[0]);
-
-                JSONObject obj = null;
-
-                ArrayList<Integer> tradeIds = new ArrayList<Integer>();
-                //CREATE TRADES
-                System.out.println("Create Trades");
-                for (int i =0; i<TIMES; i++) {
-                    JSONObject response = ApacheHttpRequest.createTrade(httpClient);
-                    int id = Integer.parseInt(((JSONObject)response.get("tradeOpened")).get("id").toString());
-                    tradeIds.add(id);
-                }
-                //CLOSE TRADES
-                System.out.println("\nClose Trades");
-                for (int tradeId : tradeIds) {
-                    ApacheHttpRequest.closeTrade(httpClient, tradeId);
-                }
-
-                //GET TRADES
-                System.out.println("\nGet 10 trades:");
-                for (int i =0; i<TIMES; i++) {
-                    ApacheHttpRequest.getTrades(httpClient, 10);
-                }
-                System.out.println("\nGet 50 trades:");
-                for (int i =0; i<TIMES; i++) {
-                    ApacheHttpRequest.getTrades(httpClient, 50);
-                }
-                System.out.println("\nGet 100 trades:");
-                for (int i =0; i<TIMES; i++) {
-                    ApacheHttpRequest.getTrades(httpClient, 100);
-                }
-                System.out.println("\nGet 250 trades:");
-                for (int i =0; i<TIMES; i++) {
-                    ApacheHttpRequest.getTrades(httpClient, 250);
-                }
-                System.out.println("\nGet 500 trades:");
-                for (int i =0; i<TIMES; i++) {
-                    ApacheHttpRequest.getTrades(httpClient, 500);
-                }
-
+                TIMES = Integer.parseInt(args[0]);
             } else {
                 System.out.println("Enter Number of trails");
+            }
+
+            JSONObject obj = null;
+
+            ArrayList<Integer> tradeIds = new ArrayList<Integer>();
+
+            //GET TRADES
+            System.out.println("\nGet 10 trades:");
+            for (int i =0; i<TIMES; i++) {
+                ApacheHttpRequest.getTrades(httpClient, 10);
+                //System.out.println(obj);
+            }
+            System.out.println("\nGet 50 trades:");
+            for (int i =0; i<TIMES; i++) {
+                ApacheHttpRequest.getTrades(httpClient, 50);
+            }
+            System.out.println("\nGet 100 trades:");
+            for (int i =0; i<TIMES; i++) {
+                ApacheHttpRequest.getTrades(httpClient, 100);
+            }
+            System.out.println("\nGet 500 trades:");
+            for (int i =0; i<TIMES; i++) {
+                ApacheHttpRequest.getTrades(httpClient, 500);
+            }
+
+            //CREATE TRADES
+            System.out.println("Create Trades");
+            for (int i =0; i<TIMES; i++) {
+                JSONObject response = ApacheHttpRequest.createTrade(httpClient);
+                int id = Integer.parseInt(((JSONObject)response.get("tradeOpened")).get("id").toString());
+                tradeIds.add(id);
+            }
+            //CLOSE TRADES
+            System.out.println("\nClose Trades");
+            for (int tradeId : tradeIds) {
+                ApacheHttpRequest.closeTrade(httpClient, tradeId);
             }
 
         } finally {

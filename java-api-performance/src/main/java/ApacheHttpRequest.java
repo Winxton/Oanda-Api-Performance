@@ -1,3 +1,4 @@
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -24,25 +25,26 @@ import java.util.List;
  * Created by wwu on 28/03/14.
  */
 public class ApacheHttpRequest {
-    public static JSONObject makeRequest(DefaultHttpClient httpClient, HttpUriRequest request) throws IOException {
+    public static JSONObject makeRequest(DefaultHttpClient httpClient, HttpUriRequest request) throws Exception {
+        Thread.sleep(100);
         // Time the latency
         long startTime = System.nanoTime();
 
         HttpResponse resp = httpClient.execute(request);
 
-        long totalTime = System.nanoTime() - startTime;
-        System.out.println(1.0*totalTime/1000000);
-
         HttpEntity entity = resp.getEntity();
 
         //EntityUtils.consume(entity);
 
-         /*
+
         Header[] headers = resp.getAllHeaders();
         for (Header header : headers) {
             System.out.println(header.getName() + " " + header.getValue());
         }
-        */
+
+
+        long totalTime = System.nanoTime() - startTime;
+        System.out.println(1.0*totalTime/1000000);
 
         JSONObject respObj;
 
@@ -63,7 +65,7 @@ public class ApacheHttpRequest {
 
     }
 
-    public static JSONObject getTrades(DefaultHttpClient httpClient, int numTrades) throws IOException{
+    public static JSONObject getTrades(DefaultHttpClient httpClient, int numTrades) throws Exception{
 
         HttpUriRequest httpRequest = new HttpGet("https://api-fxpractice.oanda.com/v1/accounts/3922748/trades?count=" + numTrades);
         httpRequest.setHeader(new BasicHeader("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22"));
@@ -71,7 +73,7 @@ public class ApacheHttpRequest {
         return makeRequest(httpClient, httpRequest);
     }
 
-    public static JSONObject createTrade(DefaultHttpClient httpClient) throws IOException {
+    public static JSONObject createTrade(DefaultHttpClient httpClient) throws Exception {
 
         HttpPost httpRequest = new HttpPost("https://api-fxpractice.oanda.com/v1/accounts/3922748/orders");
         httpRequest.setHeader(new BasicHeader("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22"));
@@ -87,7 +89,7 @@ public class ApacheHttpRequest {
         return makeRequest(httpClient, httpRequest);
     }
 
-    public static JSONObject closeTrade(DefaultHttpClient httpClient, int tradeId) throws IOException {
+    public static JSONObject closeTrade(DefaultHttpClient httpClient, int tradeId) throws Exception {
         HttpDelete httpRequest = new HttpDelete("https://api-fxpractice.oanda.com/v1/accounts/3922748/trades/" + tradeId);
         httpRequest.setHeader(new BasicHeader("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22"));
 
