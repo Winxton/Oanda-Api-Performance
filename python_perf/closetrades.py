@@ -6,6 +6,8 @@ def run(client, num_trials=15):
 
     trade_ids = []
 
+    print ("OPEN TRADES")
+
     for i in range(0, num_trials):
         singletime = time.time()
         response = client.create_order(account_id, 
@@ -18,7 +20,7 @@ def run(client, num_trials=15):
         trade_ids.append(trade_id)
         print '%0.3f' % ((time.time()-singletime)*1000.0)
 
-    print ("CLOSE TRADES")
+    print ("\nCLOSE TRADES")
 
     for i in range(0, num_trials):
         singletime = time.time()

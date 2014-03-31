@@ -101,42 +101,57 @@ int main (int argc, char* argv[]) {
     try {
         const Context::Ptr context = new Context(Context::CLIENT_USE, "", "", "", Context::VERIFY_NONE, 9, false, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
 
-        // prepare session
-        string host = "api-fxpractice.oanda.com";
-        HTTPSClientSession session(host, 443, context);
-        session.setKeepAlive(true);
-        
-        vector<int> trades;
-
-        int trades_to_open = 15;
-        cout << "OPEN TRADES" << endl;
-        for (int i =0; i<trades_to_open; i++) {
-            int trade_id = openTrade(session);
-            trades.push_back(trade_id);
-        }
-        
-        cout << "CLOSE TRADES" << endl;
-        for(int trade_id : trades) {
-            closeTrades(session, trade_id);
-        }
-        
-        /*
-        if (argc == 3) {
+        if (argc == 2) {
             const int NUM_REQ = atoi(argv[1]);
-            const int numTrades = atoi(argv[2]);
 
-            cout << NUM_REQ << " " << numTrades << endl; 
+            cout << NUM_REQ << " Requests" << endl; 
 
-            // TEST GET TRADES
+            // prepare session
+            string host = "api-fxpractice.oanda.com";
+            HTTPSClientSession session(host, 443, context);
+            session.setKeepAlive(true);
+            
+            vector<int> trades;
+
+            cout << "OPEN TRADES" << endl;
+            for (int i =0; i<NUM_REQ; i++) {
+                int trade_id = openTrade(session);
+                trades.push_back(trade_id);
+            }
+            
+            cout << "CLOSE TRADES" << endl;
+            for(int trade_id : trades) {
+                closeTrades(session, trade_id);
+            }
+
+            cout << "GET 10 TRADES" << endl;
             for (int i = 0 ; i < NUM_REQ ; i++)
             {
-                getTrades(session, numTrades);
+                getTrades(session, 10);
+            }
+
+            cout << "GET 50 TRADES" << endl;
+            for (int i = 0 ; i < NUM_REQ ; i++)
+            {
+                getTrades(session, 50);
+            }
+
+            cout << "GET 100 TRADES" << endl;
+            for (int i = 0 ; i < NUM_REQ ; i++)
+            {
+                getTrades(session, 100);
+            }
+
+            cout << "GET 500 TRADES" << endl;
+            for (int i = 0 ; i < NUM_REQ ; i++)
+            {
+                getTrades(session, 500);
             }
 
         } else {
-            cout << "enter [number of requests] [number of trades]" << endl;
+            cout << "enter [number of requests]" << endl;
         }
-        */
+
 
 
     } catch (const Exception &e) {
