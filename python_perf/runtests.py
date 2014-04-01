@@ -18,9 +18,6 @@ if len(sys.argv) == 2:
 	print ("waiting...")
 	time.sleep(1)
 
-	print ("open orders")
-	opentrades.run(oanda, trials)
-	
 	# OPEN AND CLOSE TRADES
 	print "open and close trades"
 	closetrades.run(oanda, trials);
