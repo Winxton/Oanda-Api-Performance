@@ -1,0 +1,8 @@
+#!/bin/bash
+
+curl -ivX GET \
+-H "Authorization: Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22" \
+-H "Accept-encoding: identity, deflate, compress, gzip" \
+"https://api-fxpractice.oanda.com/v1/accounts/3922748/trades?count=500" \
+-w %{time_connect}:%{time_starttransfer}:%{time_total} \
+-o /dev/null

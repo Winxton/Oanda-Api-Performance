@@ -23,9 +23,18 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
+/*
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+*/
+
+/*
+import net.minidev.json.JSONObject;
+import net.minidev.json.JSONValue;
+*/
+
+import com.alibaba.fastjson.JSONObject;
 
 public class JavaPerformance {
 
@@ -72,6 +81,7 @@ public class JavaPerformance {
             for (int i =0; i<TIMES; i++) {
                 UrlConnectionRequest.getTrades(100);
             }
+
             System.out.println("\nGet 500 trades:");
             for (int i =0; i<TIMES; i++) {
                 UrlConnectionRequest.getTrades(500);

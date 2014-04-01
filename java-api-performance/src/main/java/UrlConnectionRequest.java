@@ -1,6 +1,20 @@
+import net.minidev.json.JSONAware;
 import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
+
+/*
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+*/
+
+/*
+import net.minidev.json.JSONObject;
+import net.minidev.json.JSONValue;
+*/
+
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSON;
+import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -9,35 +23,58 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.ZipException;
 
 /**
  * Created by wwu on 28/03/14.
  */
 public class UrlConnectionRequest {
-    public static JSONObject makeRequest(URLConnection connection) throws IOException {
-
+    public static JSONObject makeRequest(URLConnection connection) throws IOException, InterruptedException {
         long startTime = System.nanoTime();
 
-        InputStream response = connection.getInputStream();
+        String header = connection.getHeaderField(0);
+        System.out.println(header);
+        System.out.println("---Start of headers---");
+        int i = 1;
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(response));
-        JSONObject jsonObj = (JSONObject) JSONValue.parse(br);
+        while ((header = connection.getHeaderField(i)) != null) {
+            String key = connection.getHeaderFieldKey(i);
+            System.out.println(((key==null) ? "" : key + ": ") + header);
+            i++;
+        }
+
+        InputStream stream = connection.getInputStream();
+        if ("gzip".equals(connection.getContentEncoding())) {
+            stream = new GZIPInputStream(stream);
+        }
+
+        long jsonStartTime = System.nanoTime();
+        byte[] content = IOUtils.toByteArray(stream);
+
+        JSONObject jsonObj = (JSONObject) JSON.parse(content);
+
+        long jsonTotalTime = System.nanoTime()-jsonStartTime;
+        //System.out.println("JSON PARSE TIME: " + 1.0*(jsonTotalTime)/1000000);
 
         long totalTime = System.nanoTime() - startTime;
-        System.out.println(1.0*totalTime/1000000);
+        System.out.println(1.0*(totalTime)/1000000);
+        Thread.sleep(100);
+
         return jsonObj;
     }
 
-    public static JSONObject getTrades(int count) throws IOException {
+    public static JSONObject getTrades(int count) throws IOException, InterruptedException {
         String url = "https://api-fxpractice.oanda.com/v1/accounts/3922748/trades?count="+count;
         String charset = "UTF-8";
         URLConnection connection = new URL(url).openConnection();
         connection.setRequestProperty("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22");
         connection.setRequestProperty("Accept-Charset", charset);
+        connection.setRequestProperty("Accept-Encoding", "deflate, compress, gzip");
         return makeRequest(connection);
     }
 
-    public static JSONObject makeOrder() throws IOException {
+    public static JSONObject makeOrder() throws IOException, InterruptedException {
         String url = "https://api-fxpractice.oanda.com/v1/accounts/3922748/orders";
         String charset = "UTF-8";
         String instrument = "EUR_USD";
@@ -56,6 +93,7 @@ public class UrlConnectionRequest {
         connection.setDoOutput(true); // Triggers POST.
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + charset);
         connection.setRequestProperty("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22");
+        connection.setRequestProperty("Accept-Encoding", "deflate, compress, gzip");
 
         OutputStream output = connection.getOutputStream();
         try {
@@ -67,11 +105,12 @@ public class UrlConnectionRequest {
         return makeRequest(connection);
     }
 
-    public static JSONObject closeTrade(int tradeId) throws IOException {
+    public static JSONObject closeTrade(int tradeId) throws IOException, InterruptedException {
         String url = "https://api-fxpractice.oanda.com/v1/accounts/3922748/trades/"+tradeId;
         HttpURLConnection connection = (HttpURLConnection)new URL(url).openConnection();
         connection.setDoInput(true);
         connection.setRequestProperty("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22");
+        connection.setRequestProperty("Accept-Encoding", "deflate, compress, gzip");
         connection.setRequestProperty(
                 "Content-Type", "application/x-www-form-urlencoded" );
         connection.setRequestMethod("DELETE");

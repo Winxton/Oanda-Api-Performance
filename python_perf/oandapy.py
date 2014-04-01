@@ -1,5 +1,6 @@
 import json
 import requests
+import time
 
 """ OANDA API wrapper for OANDA's REST API """
 
@@ -181,7 +182,7 @@ class API(EndpointsMixin, object):
 
         self.access_token = access_token
         self.client = requests.Session()
-        
+
         #personal token authentication
         if self.access_token:
             self.client.headers['Authorization'] = 'Bearer ' + self.access_token
@@ -202,6 +203,7 @@ class API(EndpointsMixin, object):
         method = method.lower()
         params = params or {}
 
+        #print self.client.headers
         func = getattr(self.client, method)
 
         request_args = {}
@@ -212,13 +214,17 @@ class API(EndpointsMixin, object):
 
         try:
             response = func(url, **request_args)
+            #print response.content
             #print response.headers
         except requests.RequestException as e:
             print (str(e))
-        content = response.content.decode('utf-8')
 
+        jsontime = time.time()
+        content = response.content.decode('utf-8')
         content = json.loads(content)
-        
+
+        #print 'JSON TIME: %0.3f' % ((time.time()-jsontime)*1000.0)
+
         if response.status_code == 429:
             print ("RATE LIMITED")
 

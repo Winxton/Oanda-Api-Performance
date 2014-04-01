@@ -11,8 +11,12 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+/*
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+*/
+import net.minidev.json.JSONObject;
+import net.minidev.json.JSONValue;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,15 +38,23 @@ public class ApacheHttpRequest {
         HttpResponse resp = httpClient.execute(request);
         HttpEntity entity = resp.getEntity();
 
-        //EntityUtils.consume(entity);
+        long jsonStartTime = System.nanoTime();
+        EntityUtils.consume(entity);
+        System.out.println("EntityUtils consume: " + 1.0*(System.nanoTime()-jsonStartTime)/1000000);
+
         /*
         Header[] headers = resp.getAllHeaders();
         for (Header header : headers) {
             System.out.println(header.getName() + " " + header.getValue());
         }
         */
+
         long totalTime = System.nanoTime() - startTime;
         System.out.println(1.0*totalTime/1000000);
+
+        return null;
+        /*
+
 
         JSONObject respObj;
 
@@ -60,6 +72,7 @@ public class ApacheHttpRequest {
 
         //System.out.println(respObj.toJSONString());
         return respObj;
+        */
 
     }
 

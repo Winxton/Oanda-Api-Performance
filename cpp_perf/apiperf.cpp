@@ -37,11 +37,11 @@ int openTrade(HTTPSClientSession &session) {
 
     ostringstream oss;
     oss << session.receiveResponse(res).rdbuf();
-    string s = oss.str();
     //cout << s << endl;
 
-    cJSON *root = cJSON_Parse(s.c_str());
+    cJSON *root = cJSON_Parse(oss.str().c_str());
     cJSON *tradeOpened = cJSON_GetObjectItem(root,"tradeOpened");
+    //cout << cJSON_GetObjectItem(tradeOpened, "id")->valueint << endl;
 
     auto finishInd = std::chrono::high_resolution_clock::now();
     cout << 1.0*std::chrono::duration_cast<std::chrono::nanoseconds>(finishInd-startInd).count()/1000000 << "\n";
@@ -55,6 +55,7 @@ void closeTrades(HTTPSClientSession &session, int trade_id) {
     // send request
     HTTPRequest req(HTTPRequest::HTTP_DELETE, path, HTTPMessage::HTTP_1_1);
     req.set("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22");
+    req.set("Accept-Encoding", "deflate, compress, gzip");
     req.setContentType("application/x-www-form-urlencoded");
 
     auto startInd = std::chrono::high_resolution_clock::now();
@@ -72,13 +73,13 @@ void closeTrades(HTTPSClientSession &session, int trade_id) {
 }
 
 
-void getTrades(HTTPSClientSession &session, int numTrades) {
+void getTrades(HTTPSClientSession &session, int numTrades, bool showJsonTime=false) {
     string path = "/v1/accounts/3922748/trades?count=" + to_string(numTrades);
 
     // send request
     HTTPRequest req(HTTPRequest::HTTP_GET, path, HTTPMessage::HTTP_1_1);
     req.set("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22");
-
+    req.set("Accept-Encoding", "deflate, compress, gzip");
     auto startInd = std::chrono::high_resolution_clock::now();
 
     //cout << "sending request..." << endl;
@@ -91,7 +92,13 @@ void getTrades(HTTPSClientSession &session, int numTrades) {
     // print response
     ostringstream oss;
     oss << session.receiveResponse(res).rdbuf();
+    
+    auto jsonStart = std::chrono::high_resolution_clock::now();
     cJSON *root = cJSON_Parse(oss.str().c_str());
+
+    if (showJsonTime)
+        cout << "JSONTIME: " << 1.0*std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now()-jsonStart).count()/1000000 << "\n";
+
     //cout << s << endl;
     
     auto finishInd = std::chrono::high_resolution_clock::now();
@@ -115,36 +122,36 @@ int main (int argc, char* argv[]) {
             
             vector<int> trades;
 
-            cout << "OPEN TRADES" << endl;
+            cout << "\nOPEN TRADES" << endl;
             for (int i =0; i<NUM_REQ; i++) {
                 int trade_id = openTrade(session);
                 trades.push_back(trade_id);
             }
             
-            cout << "CLOSE TRADES" << endl;
+            cout << "\nCLOSE TRADES" << endl;
             for(int trade_id : trades) {
                 closeTrades(session, trade_id);
             }
 
-            cout << "GET 10 TRADES" << endl;
+            cout << "\nGET 10 TRADES" << endl;
             for (int i = 0 ; i < NUM_REQ ; i++)
             {
                 getTrades(session, 10);
             }
 
-            cout << "GET 50 TRADES" << endl;
+            cout << "\nGET 50 TRADES" << endl;
             for (int i = 0 ; i < NUM_REQ ; i++)
             {
                 getTrades(session, 50);
             }
 
-            cout << "GET 100 TRADES" << endl;
+            cout << "\nGET 100 TRADES" << endl;
             for (int i = 0 ; i < NUM_REQ ; i++)
             {
                 getTrades(session, 100);
             }
 
-            cout << "GET 500 TRADES" << endl;
+            cout << "\nGET 500 TRADES" << endl;
             for (int i = 0 ; i < NUM_REQ ; i++)
             {
                 getTrades(session, 500);
