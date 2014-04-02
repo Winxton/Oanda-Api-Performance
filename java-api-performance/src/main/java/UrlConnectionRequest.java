@@ -50,14 +50,10 @@ public class UrlConnectionRequest {
             i++;
         }
         */
-        
-        long jsonStartTime = System.nanoTime();
+
         byte[] content = IOUtils.toByteArray(stream);
 
         JSONObject jsonObj = (JSONObject) JSON.parse(content);
-
-        long jsonTotalTime = System.nanoTime()-jsonStartTime;
-        //System.out.println("JSON PARSE TIME: " + 1.0*(jsonTotalTime)/1000000);
 
         long totalTime = System.nanoTime() - startTime;
         System.out.println(1.0*(totalTime)/1000000);

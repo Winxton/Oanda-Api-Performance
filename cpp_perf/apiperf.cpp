@@ -40,14 +40,18 @@ cJSON *makeRequest (HTTPSClientSession &session, HTTPRequest &request, string &r
 
     ostringstream ss;
     istream& is = session.receiveResponse(res);
-    Poco::InflatingInputStream inflater(is, Poco::InflatingStreamBuf::STREAM_GZIP);
-    StreamCopier::copyStream( inflater, ss );
 
     /*
     cout << res.getStatus() << " " << res.getReason() 
     << " " << res.get("Connection") << " " << res.get("content-encoding") << endl;  
     */
-    
+    if (res.has("content-encoding") &&  res.get("content-encoding")=="gzip") {
+        Poco::InflatingInputStream inflater(is, Poco::InflatingStreamBuf::STREAM_GZIP);
+        StreamCopier::copyStream( inflater, ss );
+    } else {
+        StreamCopier::copyStream( is, ss );
+    }
+
     //decode json
     cJSON *root = cJSON_Parse(ss.str().c_str());
 
