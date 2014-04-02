@@ -15,7 +15,6 @@ def run(client, num_trials=15):
                           side="buy", 
                           units=10, 
                           type="market")
-        
         trade_id = response.get("tradeOpened").get("id")
         trade_ids.append(trade_id)
         print '%0.3f' % ((time.time()-singletime)*1000.0)

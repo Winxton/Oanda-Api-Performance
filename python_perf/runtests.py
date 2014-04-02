@@ -6,20 +6,20 @@ import sys
 import time
 import oandapy
 
-token = "b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22"
-oanda = oandapy.API(environment="practice", access_token=token)
-
-if len(sys.argv) == 2:
+if len(sys.argv) == 4:
 
 	trials = int(sys.argv[1])
+	keep_alive = True if int(sys.argv[2]) == 1 else False
+	compress = True if int(sys.argv[3]) == 1 else False
 
-	gettrades.run(oanda, 1, trades=1)
+	print ("keep alive " + str(keep_alive))
+	print ("compress " + str(compress))
 
-	print ("waiting...")
-	time.sleep(1)
+	token = "b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22"
+	oanda = oandapy.API(environment="practice", access_token=token, keep_alive=keep_alive, compress=compress)
 
 	# OPEN AND CLOSE TRADES
-	print "open and close trades"
+	print "\nopen and close trades"
 	closetrades.run(oanda, trials);
 
 	print ("\n10 trades")
@@ -35,5 +35,4 @@ if len(sys.argv) == 2:
 	gettrades.run(oanda, trials, trades=500)
 	
 else:
-
-	print "Enter number of trials"
+	print "Enter [number of trials] [keep-alive] [compress]"

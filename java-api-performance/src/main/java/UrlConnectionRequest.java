@@ -33,6 +33,12 @@ public class UrlConnectionRequest {
     public static JSONObject makeRequest(URLConnection connection) throws IOException, InterruptedException {
         long startTime = System.nanoTime();
 
+        InputStream stream = connection.getInputStream();
+        if ("gzip".equals(connection.getContentEncoding())) {
+            stream = new GZIPInputStream(stream);
+        }
+
+        /*
         String header = connection.getHeaderField(0);
         System.out.println(header);
         System.out.println("---Start of headers---");
@@ -43,12 +49,8 @@ public class UrlConnectionRequest {
             System.out.println(((key==null) ? "" : key + ": ") + header);
             i++;
         }
-
-        InputStream stream = connection.getInputStream();
-        if ("gzip".equals(connection.getContentEncoding())) {
-            stream = new GZIPInputStream(stream);
-        }
-
+        */
+        
         long jsonStartTime = System.nanoTime();
         byte[] content = IOUtils.toByteArray(stream);
 
@@ -64,17 +66,19 @@ public class UrlConnectionRequest {
         return jsonObj;
     }
 
-    public static JSONObject getTrades(int count) throws IOException, InterruptedException {
+    public static JSONObject getTrades(int count, boolean keepAlive, boolean compress) throws IOException, InterruptedException {
         String url = "https://api-fxpractice.oanda.com/v1/accounts/3922748/trades?count="+count;
         String charset = "UTF-8";
         URLConnection connection = new URL(url).openConnection();
         connection.setRequestProperty("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22");
         connection.setRequestProperty("Accept-Charset", charset);
-        connection.setRequestProperty("Accept-Encoding", "deflate, compress, gzip");
+        if (compress) connection.setRequestProperty("Accept-Encoding", "deflate, compress, gzip");
+        if (!keepAlive) connection.setRequestProperty("Connection", "close");
+
         return makeRequest(connection);
     }
 
-    public static JSONObject makeOrder() throws IOException, InterruptedException {
+    public static JSONObject makeOrder(boolean keepAlive, boolean compress) throws IOException, InterruptedException {
         String url = "https://api-fxpractice.oanda.com/v1/accounts/3922748/orders";
         String charset = "UTF-8";
         String instrument = "EUR_USD";
@@ -93,7 +97,8 @@ public class UrlConnectionRequest {
         connection.setDoOutput(true); // Triggers POST.
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + charset);
         connection.setRequestProperty("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22");
-        connection.setRequestProperty("Accept-Encoding", "deflate, compress, gzip");
+        if (compress) connection.setRequestProperty("Accept-Encoding", "deflate, compress, gzip");
+        if (!keepAlive) connection.setRequestProperty("Connection", "close");
 
         OutputStream output = connection.getOutputStream();
         try {
@@ -105,15 +110,19 @@ public class UrlConnectionRequest {
         return makeRequest(connection);
     }
 
-    public static JSONObject closeTrade(int tradeId) throws IOException, InterruptedException {
+    public static JSONObject closeTrade(int tradeId, boolean keepAlive, boolean compress) throws IOException, InterruptedException {
         String url = "https://api-fxpractice.oanda.com/v1/accounts/3922748/trades/"+tradeId;
         HttpURLConnection connection = (HttpURLConnection)new URL(url).openConnection();
         connection.setDoInput(true);
         connection.setRequestProperty("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22");
-        connection.setRequestProperty("Accept-Encoding", "deflate, compress, gzip");
+
         connection.setRequestProperty(
                 "Content-Type", "application/x-www-form-urlencoded" );
         connection.setRequestMethod("DELETE");
+
+        if (compress) connection.setRequestProperty("Accept-Encoding", "deflate, compress, gzip");
+        if (!keepAlive) connection.setRequestProperty("Connection", "close");
+
         return makeRequest(connection);
     }
 

@@ -167,7 +167,7 @@ class EndpointsMixin(object):
 """ Provides functionality for access to core OANDA API calls """
 
 class API(EndpointsMixin, object):
-    def __init__(self, environment="practice", access_token=None):
+    def __init__(self, environment="practice", access_token=None, keep_alive=True, compress=True):
         """Instantiates an instance of OandaPy's API wrapper
         :param environment: (optional) Provide the environment for oanda's REST api, either 'sandbox', 'practice', or 'live'. Default: practice
         :param access_token: (optional) Provide a valid access token if you have one. This is required if the environment is not sandbox.
@@ -182,6 +182,12 @@ class API(EndpointsMixin, object):
 
         self.access_token = access_token
         self.client = requests.Session()
+        
+        if not keep_alive:
+            self.client.headers["Connection"] = "close"
+
+        if not compress:
+            self.client.headers['Accept-Encoding'] = 'identity'
 
         #personal token authentication
         if self.access_token:

@@ -43,50 +43,54 @@ public class JavaPerformance {
         DefaultHttpClient httpClient = new DefaultHttpClient();
 
         try {
-            int TIMES = 5;
+            int TIMES = 1;
+            boolean keepAlive = true;
+            boolean compress = true;
 
-            if (args.length == 1) {
+            if (args.length == 3) {
                 TIMES = Integer.parseInt(args[0]);
+                keepAlive = Integer.parseInt(args[1]) == 1 ? true : false;
+                compress = Integer.parseInt(args[2]) == 1 ? true : false;
             } else {
-                System.out.println("Enter Number of trails");
+                System.out.println("Enter [Number of trails] [keep-alive] [compress]");
             }
+
+            System.out.println("Keep-Alive: " + keepAlive);
+            System.out.println("Compression: " + compress);
 
             JSONObject obj = null;
 
             ArrayList<Integer> tradeIds = new ArrayList<Integer>();
 
             //CREATE TRADES
-            System.out.println("Create Trades");
+            System.out.println("\nCreate Trades");
             for (int i =0; i<TIMES; i++) {
-                JSONObject response = UrlConnectionRequest.makeOrder();
+                JSONObject response = UrlConnectionRequest.makeOrder(keepAlive, compress);
                 int id = Integer.parseInt(((JSONObject)response.get("tradeOpened")).get("id").toString());
                 tradeIds.add(id);
             }
             //CLOSE TRADES
             System.out.println("\nClose Trades");
             for (int tradeId : tradeIds) {
-                UrlConnectionRequest.closeTrade(tradeId);
+                UrlConnectionRequest.closeTrade(tradeId, keepAlive, compress);
             }
             //GET TRADES
             System.out.println("\nGet 10 trades:");
             for (int i =0; i<TIMES; i++) {
-                UrlConnectionRequest.getTrades(10);
-                //System.out.println(obj);
+                UrlConnectionRequest.getTrades(10, keepAlive, compress);
             }
             System.out.println("\nGet 50 trades:");
             for (int i =0; i<TIMES; i++) {
-                UrlConnectionRequest.getTrades(50);
+                UrlConnectionRequest.getTrades(50, keepAlive, compress);
             }
             System.out.println("\nGet 100 trades:");
             for (int i =0; i<TIMES; i++) {
-                UrlConnectionRequest.getTrades(100);
+                UrlConnectionRequest.getTrades(100, keepAlive, compress);
             }
-
             System.out.println("\nGet 500 trades:");
             for (int i =0; i<TIMES; i++) {
-                UrlConnectionRequest.getTrades(500);
+                UrlConnectionRequest.getTrades(500, keepAlive, compress);
             }
-
 
         } finally {
             httpClient.getConnectionManager().shutdown();
