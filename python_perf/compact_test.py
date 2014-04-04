@@ -50,38 +50,50 @@ def decode_streaming_data(streaming_data):
 
 def fetch_timestamp(binary):
     sec_binary = binary[11:22]
-    # Get the current server time(UTC), convert into binary, and remove the last 11 bits
-    # Concat with the sec_binary above
     server_ts_utc = calendar.timegm(datetime.utcnow().utctimetuple())
     timestamp = int(bin(server_ts_utc)[2:-11] + sec_binary, 2)
     millisec = int(binary[22:32], 2)
+    timestamp += millisec/1000.0
     return timestamp, millisec
 
 def latency_test(tick_count):
-    # with open('CompactStream_Performance_Report.csv', 'a') as csvfile:
+    open('CompactStream_Performance_Report.csv', 'w').close()
+    counter = 0
     tick_socket = connect_to_compact_stream()
     # EUR_USD
     tick_socket.send("+1\r\n")
     # First tick is always a heartbeat
     streaming_data = tick_socket.recv(BUFFER_SIZE)
 
-    while True:
-        tick_socket.send("h\r\n");
-        streaming_data = tick_socket.recv(BUFFER_SIZE)
-        if not streaming_data:
-            continue
-        decoded_binary_data = decode_streaming_data(streaming_data)
-        after_decode = float(datetime.now(pytz.utc).strftime("%f"))/1000
+    with open('CompactStream_Performance_Report.csv', 'a') as csvfile:
+        reportwriter = csv.writer(csvfile, delimiter = ',', quotechar = '|', quoting = csv.QUOTE_MINIMAL)
+        reportwriter.writerow(["Compact Stream Performance Test"])
+        reportwriter.writerow(["Tick", "Timestamp on Tick", "Latency Before Decode", "Latency After Decode"])
+        while float(tick_count) > counter:
+            tick_socket.send("h\r\n");
+            streaming_data = tick_socket.recv(BUFFER_SIZE)
+            before_decode = float(datetime.now(pytz.utc).strftime("%f"))/1000
+            if not streaming_data:
+                continue
+            decoded_binary_data = decode_streaming_data(streaming_data)
+            after_decode = float(datetime.now(pytz.utc).strftime("%f"))/1000
 
-        if not "heartbeat" == decoded_binary_data:
-            tick_timestamp, tick_millisec = fetch_timestamp(decoded_binary_data)
-            print after_decode - tick_millisec
+            if not "heartbeat" == decoded_binary_data:
+                timestamp, tick_millisec = fetch_timestamp(decoded_binary_data)
+                diff_before_decode = before_decode - tick_millisec if before_decode > tick_millisec else 1000 + before_decode - tick_millisec
+                diff_after_decode = after_decode - tick_millisec if after_decode > tick_millisec else 1000 + after_decode - tick_millisec
+                counter += 1
+                reportwriter.writerow(["Tick %0d" % counter, "%0.3f" % timestamp, "%0.3f" % diff_before_decode, "%0.3f" % diff_after_decode])
 
 def main():
-    if 2 != len(sys.argv):
+    if 2 < len(sys.argv):
         sys.exit("incorrect number of arguments")
-    tick_count = sys.argv[1]
-    latency_test(tick_count)
+    tick_count = sys.argv[1] if 2 == len(sys.argv) else float("inf")
+    if tick_count <= 0:
+        sys.exit("invalid value of number of ticks")
+    else:
+        latency_test(tick_count)
+    sys.exit("Work Complete")
 
 if __name__ == '__main__':
     main()
