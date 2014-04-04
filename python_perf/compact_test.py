@@ -79,10 +79,10 @@ def latency_test(tick_count):
     # First tick is always a heartbeat
     streaming_data = tick_socket.recv(BUFFER_SIZE)
 
-    with open('CompactStream_Performance_Report.csv', 'a') as csvfile:
+    with open('streamresults/CompactStream_Performance_Report.csv', 'a') as csvfile:
         reportwriter = csv.writer(csvfile, delimiter = ',', quotechar = '|', quoting = csv.QUOTE_MINIMAL)
         reportwriter.writerow(["Compact Stream Performance Test"])
-        reportwriter.writerow(["Tick", "Timestamp on Tick", "Latency After Decode", "Bid", "Ask"])
+        reportwriter.writerow(["Timestamp on Tick", "Latency After Decode", "Bid", "Ask"])
         while float(tick_count) > counter:
             tick_socket.send("h\r\n");
             streaming_data = tick_socket.recv(BUFFER_SIZE)
@@ -95,7 +95,9 @@ def latency_test(tick_count):
                 tick_ts, tick_millisec, tick_bid, tick_ask = fetch(decoded_binary_data)
                 diff_after_decode = after_decode - tick_millisec if after_decode > tick_millisec else 1000 + after_decode - tick_millisec
                 counter += 1
-                reportwriter.writerow(["Tick %0d" % counter, "%0.3f" % tick_ts, "%0.3f" % diff_after_decode, tick_bid, tick_ask])
+                print "%.3f" % tick_ts
+                print "%.3f" % diff_after_decode
+                reportwriter.writerow(["%0.3f" % tick_ts, "%0.3f" % diff_after_decode, tick_bid, tick_ask])
 
 def main():
     if 2 < len(sys.argv):
