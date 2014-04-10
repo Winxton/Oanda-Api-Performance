@@ -4,6 +4,7 @@ import pytz
 import time
 from datetime import datetime
 from time import mktime
+import calendar
 import rfc3339
 
 class MyStreamer(oandapy.Streamer):
@@ -28,18 +29,22 @@ class MyStreamer(oandapy.Streamer):
             #print (data)
             tick_time = data.get("time")
             tick_time = rfc3339.parse_datetime(tick_time)
-            #print ( tick_time )
+
             #print ( now )
             diff = now - tick_time
 
-            timestamp = float(time.mktime(tick_time.timetuple()) * 1000 + tick_time.microsecond / 1000)/1000.0
+            #timestamp = float(time.mktime(tick_time.timetuple()) * 1000 + tick_time.microsecond / 1000)/1000.0
+            timestamp = int(calendar.timegm(tick_time.utctimetuple())) + tick_time.microsecond/1000 / 1000.0
+
             diff_timestamp = diff.total_seconds()*1000
+
             tick_bid = data.get("bid")
             tick_ask = data.get("ask")
 
             print ( "%0.3f" % (timestamp) )
-            print ( "%.2f" % (diff_timestamp) )
+            print ( "%.3f" % (diff_timestamp) )
             self.reportwriter.writerow(["%0.3f" % timestamp, "%0.3f" % diff_timestamp, tick_bid, tick_ask])
+            
             """
             self.ticks += 1
             if self.ticks == 100:

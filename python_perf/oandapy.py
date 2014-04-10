@@ -290,10 +290,12 @@ class Streamer():
             if response.status_code != 200:
                 self.on_error(response.content)
 
+            open('streamresults/HttpStream_Performance_Report.csv', 'w').close()
             with open('streamresults/HttpStream_Performance_Report.csv', 'a') as csvfile:
                 self.reportwriter = csv.writer(csvfile, delimiter = ',', quotechar = '|', quoting = csv.QUOTE_MINIMAL)
                 self.reportwriter.writerow(["Http Stream Performance Test"])
                 self.reportwriter.writerow(["Timestamp on Tick", "Latency After Decode", "Bid", "Ask"])
+                print "OK"
 
                 print response.headers
                 for line in response.iter_lines(1):
