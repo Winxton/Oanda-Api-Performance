@@ -10,6 +10,7 @@ TCP_IP = "fxserver02.oanda.com"
 TCP_PORT = 9600
 BUFFER_SIZE = 1024
 TIMEOUT = 60
+PIPS = 5
 
 def connect_to_compact_stream():
     tick_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -48,40 +49,65 @@ def decode_streaming_data(streaming_data):
 
         return streaming_data_in_binary
 
-def fetch_timestamp(binary):
+def fetch(binary):
     sec_binary = binary[11:22]
     # Get the current server time(UTC), convert into binary, and remove the last 11 bits
     # Concat with the sec_binary above
     server_ts_utc = calendar.timegm(datetime.utcnow().utctimetuple())
     timestamp = int(bin(server_ts_utc)[2:-11] + sec_binary, 2)
     millisec = int(binary[22:32], 2)
-    return timestamp, millisec
+    timestamp += millisec/1000.0
+
+    bid = int(binary[32:53], 2)
+    # bid * 10^(-pips) to get the actual bid(with decimal)
+    bid = float(bid * pow(10, - PIPS))
+
+    spread = int(binary[53:63], 2)
+    # spread * 10^(-pips) to get the actual spread(with decimal)
+    spread = float(spread * pow(10, - PIPS))
+
+    # Calculate ask
+    ask = bid + spread
+    return timestamp, millisec, bid, ask
 
 def latency_test(tick_count):
-    # with open('CompactStream_Performance_Report.csv', 'a') as csvfile:
+    open('CompactStream_Performance_Report.csv', 'w').close()
+    counter = 0
     tick_socket = connect_to_compact_stream()
     # EUR_USD
     tick_socket.send("+1\r\n")
     # First tick is always a heartbeat
     streaming_data = tick_socket.recv(BUFFER_SIZE)
 
-    while True:
-        tick_socket.send("h\r\n");
-        streaming_data = tick_socket.recv(BUFFER_SIZE)
-        if not streaming_data:
-            continue
-        decoded_binary_data = decode_streaming_data(streaming_data)
-        after_decode = float(datetime.now(pytz.utc).strftime("%f"))/1000
+    with open('streamresults/CompactStream_Performance_Report.csv', 'a') as csvfile:
+        reportwriter = csv.writer(csvfile, delimiter = ',', quotechar = '|', quoting = csv.QUOTE_MINIMAL)
+        reportwriter.writerow(["Compact Stream Performance Test"])
+        reportwriter.writerow(["Timestamp on Tick", "Latency After Decode", "Bid", "Ask"])
+        while float(tick_count) > counter:
+            tick_socket.send("h\r\n");
+            streaming_data = tick_socket.recv(BUFFER_SIZE)
+            if not streaming_data:
+                continue
+            decoded_binary_data = decode_streaming_data(streaming_data)
+            after_decode = float(datetime.now(pytz.utc).strftime("%f"))/1000
 
-        if not "heartbeat" == decoded_binary_data:
-            tick_timestamp, tick_millisec = fetch_timestamp(decoded_binary_data)
-            print after_decode - tick_millisec
+            if not "heartbeat" == decoded_binary_data:
+                tick_ts, tick_millisec, tick_bid, tick_ask = fetch(decoded_binary_data)
+                diff_after_decode = after_decode - tick_millisec if after_decode > tick_millisec else 1000 + after_decode - tick_millisec
+                counter += 1
+                print "%.3f" % tick_ts
+                print "%.3f" % diff_after_decode
+                reportwriter.writerow(["%0.3f" % tick_ts, "%0.3f" % diff_after_decode, tick_bid, tick_ask])
 
 def main():
-    if 2 != len(sys.argv):
+    if 2 < len(sys.argv):
         sys.exit("incorrect number of arguments")
-    tick_count = sys.argv[1]
-    latency_test(tick_count)
+    tick_count = sys.argv[1] if 2 == len(sys.argv) else float("inf")
+    if tick_count <= 0:
+        sys.exit("invalid value of number of ticks")
+    else:
+        latency_test(tick_count)
+    sys.exit("Work Complete")
 
 if __name__ == '__main__':
     main()

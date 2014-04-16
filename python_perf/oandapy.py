@@ -1,6 +1,7 @@
 import json
 import requests
 import time
+import csv
 
 """ OANDA API wrapper for OANDA's REST API """
 
@@ -247,7 +248,7 @@ class Streamer():
     Docs: http://developer.oanda.com/docs/v1/stream/#rates-streaming
     """
 
-    def __init__(self, environment="practice", access_token=None):
+    def __init__(self, environment="practice", access_token=None, compress=True):
         """Instantiates an instance of OandaPy's streaming API wrapper.
         :param environment: (optional) Provide the environment for oanda's REST api, either 'practice', or 'live'. Default: practice
         :param access_token: (optional) Provide a valid access token if you have one. This is required if the environment is not sandbox.
@@ -262,6 +263,11 @@ class Streamer():
         self.client = requests.Session()
         self.client.stream = True
         self.connected = False
+
+        if compress:
+            self.client.headers['Accept-Encoding'] = 'deflate, compress, gzip'
+        else:
+            self.client.headers['Accept-Encoding'] = 'identity'
 
         #personal token authentication
         if self.access_token:
@@ -284,15 +290,27 @@ class Streamer():
             if response.status_code != 200:
                 self.on_error(response.content)
 
-            for line in response.iter_lines(1):
-                if not self.connected:
-                    break
+            open('streamresults/HttpStream_Performance_Report.csv', 'w').close()
+            with open('streamresults/HttpStream_Performance_Report.csv', 'a') as csvfile:
+                self.reportwriter = csv.writer(csvfile, delimiter = ',', quotechar = '|', quoting = csv.QUOTE_MINIMAL)
+                self.reportwriter.writerow(["Http Stream Performance Test"])
+                self.reportwriter.writerow(["Timestamp on Tick", "Latency After Decode", "Bid", "Ask"])
+                print "OK"
 
-                if line:
-                    data = json.loads(line)
-                    if not (ignore_heartbeat and data.has_key("heartbeat")):
+                print response.headers
+                for line in response.iter_lines(1):
+                    if not self.connected:
+                        break
+
+                    if line:
+                        data = json.loads(line)
                         self.on_success(data)
+                        """
+                        if not (ignore_heartbeat and data.has_key("heartbeat")):
+                            self.on_success(data)
+                        """
 
+                        
 
     def on_success(self, data):
         """ Called when data is successfully retrieved from the stream

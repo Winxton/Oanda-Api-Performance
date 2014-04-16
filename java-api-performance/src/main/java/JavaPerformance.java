@@ -43,7 +43,7 @@ public class JavaPerformance {
         DefaultHttpClient httpClient = new DefaultHttpClient();
 
         try {
-            int TIMES = 1;
+            int TIMES = 5;
             boolean keepAlive = true;
             boolean compress = true;
 
@@ -62,35 +62,65 @@ public class JavaPerformance {
 
             ArrayList<Integer> tradeIds = new ArrayList<Integer>();
 
+            UrlConnectionRequest requestClient = new UrlConnectionRequest("b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22", keepAlive, compress);
+
+            //GET 10 INSTRUMENTS
+            System.out.println("\nGet 10 Quotes");
+            String instrumentList = requestClient.getInstrumentList(10);
+            for (int i =0; i<TIMES; i++) {
+                JSONObject resp = (JSONObject)requestClient.getQuotes(instrumentList);
+                //System.out.println(resp.toJSONString());
+            }
+
+            //GET 50 INSTRUMENTS
+            System.out.println("\nGet 50 Quotes");
+            instrumentList = requestClient.getInstrumentList(50);
+            //System.out.println(instrumentList);
+            for (int i =0; i<TIMES; i++) {
+                JSONObject resp = (JSONObject)requestClient.getQuotes(instrumentList);
+                //System.out.println(resp.toJSONString());
+            }
+
+            //GET 120 INSTRUMENTS
+            System.out.println("\nGet 120 Quotes");
+            instrumentList = requestClient.getInstrumentList(120);
+            //System.out.println(instrumentList);
+            for (int i =0; i<TIMES; i++) {
+                JSONObject resp = (JSONObject)requestClient.getQuotes(instrumentList);
+                //System.out.println(resp.toJSONString());
+            }
+
+            /*
             //CREATE TRADES
             System.out.println("\nCreate Trades");
             for (int i =0; i<TIMES; i++) {
-                JSONObject response = UrlConnectionRequest.makeOrder(keepAlive, compress);
+                JSONObject response = requestClient.makeOrder();
                 int id = Integer.parseInt(((JSONObject)response.get("tradeOpened")).get("id").toString());
                 tradeIds.add(id);
             }
             //CLOSE TRADES
             System.out.println("\nClose Trades");
             for (int tradeId : tradeIds) {
-                UrlConnectionRequest.closeTrade(tradeId, keepAlive, compress);
+                requestClient.closeTrade(tradeId);
             }
             //GET TRADES
             System.out.println("\nGet 10 trades:");
             for (int i =0; i<TIMES; i++) {
-                UrlConnectionRequest.getTrades(10, keepAlive, compress);
+                requestClient.getTrades(10);
             }
             System.out.println("\nGet 50 trades:");
             for (int i =0; i<TIMES; i++) {
-                UrlConnectionRequest.getTrades(50, keepAlive, compress);
+                requestClient.getTrades(50);
             }
             System.out.println("\nGet 100 trades:");
             for (int i =0; i<TIMES; i++) {
-                UrlConnectionRequest.getTrades(100, keepAlive, compress);
+                requestClient.getTrades(100);
             }
             System.out.println("\nGet 500 trades:");
             for (int i =0; i<TIMES; i++) {
-                UrlConnectionRequest.getTrades(500, keepAlive, compress);
+                requestClient.getTrades(500);
             }
+            */
 
         } finally {
             httpClient.getConnectionManager().shutdown();

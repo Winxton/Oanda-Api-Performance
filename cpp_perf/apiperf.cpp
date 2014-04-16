@@ -23,14 +23,17 @@ using namespace std;
 
 bool keepAlive = true;
 bool doCompress = true;
+string access_token = "b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22";
 
 void prepareRequestHeaders (HTTPRequest &request) {
     if (!keepAlive) request.set("Connection", "close");
     if (doCompress) request.set("Accept-Encoding", "deflate, compress, gzip");
+    request.set("Authorization", "Bearer "+access_token);
 }
 
-cJSON *makeRequest (HTTPSClientSession &session, HTTPRequest &request, string &requestBody) {
+cJSON *makeRequest (HTTPSClientSession &session, HTTPRequest &request, string &requestBody, bool showTime=true) {
     auto startInd = std::chrono::high_resolution_clock::now();
+
     // send request
 
     session.sendRequest(request) << requestBody;
@@ -51,12 +54,15 @@ cJSON *makeRequest (HTTPSClientSession &session, HTTPRequest &request, string &r
     } else {
         StreamCopier::copyStream( is, ss );
     }
-
+    //cout << ss.str() << endl;
+    
     //decode json
     cJSON *root = cJSON_Parse(ss.str().c_str());
 
     auto finishInd = std::chrono::high_resolution_clock::now();
-    cout << 1.0*std::chrono::duration_cast<std::chrono::nanoseconds>(finishInd-startInd).count()/1000000 << "\n";
+
+    if (showTime)
+        cout << 1.0*std::chrono::duration_cast<std::chrono::nanoseconds>(finishInd-startInd).count()/1000000 << "\n";
 
     return root;
 }
@@ -66,7 +72,6 @@ int openTrade(HTTPSClientSession &session) {
 
     // send request
     HTTPRequest req(HTTPRequest::HTTP_POST, path, HTTPMessage::HTTP_1_1);
-    req.set("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22");
     prepareRequestHeaders(req);
     req.setContentType("application/x-www-form-urlencoded");
 
@@ -80,30 +85,63 @@ int openTrade(HTTPSClientSession &session) {
     return cJSON_GetObjectItem(tradeOpened, "id")->valueint;
 }
 
-void closeTrades(HTTPSClientSession &session, int trade_id) {
+cJSON *closeTrades(HTTPSClientSession &session, int trade_id) {
     string path = "/v1/accounts/3922748/trades/" + to_string(trade_id);
 
     // send request
     HTTPRequest req(HTTPRequest::HTTP_DELETE, path, HTTPMessage::HTTP_1_1);
-    req.set("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22");
     prepareRequestHeaders(req);
     req.setContentType("application/x-www-form-urlencoded");
 
     string requestBody = "";
-    makeRequest(session, req, requestBody);
+    return makeRequest(session, req, requestBody);
 }
 
 
-void getTrades(HTTPSClientSession &session, int numTrades) {
-    string path = "/v1/accounts/3922748/trades?count=" + to_string(numTrades);
+cJSON *getTrades(HTTPSClientSession &session, int numTrades) {
+    string path = "/v1/accounts/3922748/trades?count=" + std::to_string(numTrades);
 
     // send request
     HTTPRequest req(HTTPRequest::HTTP_GET, path, HTTPMessage::HTTP_1_1);
-    req.set("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22");
     prepareRequestHeaders(req);
 
     string requestBody = "";
-    makeRequest(session, req, requestBody);
+    return makeRequest(session, req, requestBody);
+}
+
+cJSON *getQuotes(HTTPSClientSession &session, string instrumentList) {
+    string path = "/v1/quote?instruments="+instrumentList;
+
+    // send request
+    HTTPRequest req(HTTPRequest::HTTP_GET, path, HTTPMessage::HTTP_1_1);
+    prepareRequestHeaders(req);
+
+    string requestBody = "";
+    return makeRequest(session, req, requestBody);
+}
+
+/* randomly gets a number of instruments */
+string getInstrumentList(HTTPSClientSession &session, int numInstruments) {
+    HTTPRequest instrumentsRequest(HTTPRequest::HTTP_GET, "/v1/instruments?accountId=3922748", HTTPMessage::HTTP_1_1);
+    instrumentsRequest.set("Authorization", "Bearer b47aa58922aeae119bcc4de139f7ea1e-27de2d1074bb442b4ad2fe0d637dec22");
+    prepareRequestHeaders(instrumentsRequest);
+    string body = "";
+
+    cJSON *response = makeRequest(session, instrumentsRequest, body, false);
+    cJSON *instruments = cJSON_GetObjectItem(response,"instruments");
+
+    //cout << cJSON_GetArraySize(instruments) << endl;
+    stringstream ss;
+
+    for (int i=0; i< numInstruments; i++) {
+        cJSON *instrument = cJSON_GetArrayItem(instruments, i);
+        string item = cJSON_GetObjectItem(instrument, "instrument")->valuestring;
+        if (i!=0)
+            ss << "%2c";
+        ss << item;
+    }
+
+    return ss.str();
 }
 
 int main (int argc, char* argv[]) {
@@ -124,7 +162,26 @@ int main (int argc, char* argv[]) {
             string host = "api-fxpractice.oanda.com";
             HTTPSClientSession session(host, 443, context);
             session.setKeepAlive(true);
-            
+
+            string instrumentList = getInstrumentList(session, 10);
+            cout << "\nGET 10 QUOTES" << endl;
+            for (int i =0; i<NUM_REQ; i++) {
+                getQuotes(session, instrumentList);
+            }
+
+            instrumentList = getInstrumentList(session, 50);
+            cout << "\nGET 50 QUOTES" << endl;
+            for (int i =0; i<NUM_REQ; i++) {
+                getQuotes(session, instrumentList);
+            }
+
+            instrumentList = getInstrumentList(session, 120);
+            cout << "\nGET 120 QUOTES" << endl;
+            for (int i =0; i<NUM_REQ; i++) {
+                getQuotes(session, instrumentList);
+            }
+
+            /*
             vector<int> trades;
 
             cout << "\nOPEN TRADES" << endl;
@@ -161,11 +218,11 @@ int main (int argc, char* argv[]) {
             {
                 getTrades(session, 500);
             }
+            */
 
         } else {
             cout << "enter [number of requests] [keep-alive] [compress]" << endl;
         }
-
     } catch (const Exception &e) {
         cerr << e.displayText() << endl;
     }
