@@ -48,7 +48,7 @@ class LatencyTest():
             open_order_timings = []
             print ("\nOPEN ORDER")
             for i in range(0, self.num_trials):
-                time.sleep(0.1)
+                time.sleep(0.05)
                 # OPEN ORDER
                 totaltime, open_trade_id = self.open_order_timing()
                 open_trade_ids.append(open_trade_id)
@@ -57,7 +57,7 @@ class LatencyTest():
             close_trade_timings = []
             print ("\nCLOSE TRADE")
             for i in range(0, self.num_trials):
-                time.sleep(0.1)
+                time.sleep(0.05)
                 # CLOSE TRADE
                 open_trade_id = open_trade_ids.pop()
                 totaltime = self.close_trade_timing(open_trade_id)
@@ -66,7 +66,7 @@ class LatencyTest():
             get_10_quotes_timings = []
             print ("\nGET 10 Quotes")
             for i in range(0, self.num_trials):
-                time.sleep(0.1)
+                time.sleep(0.05)
                 # GET 10 quotes
                 totaltime = self.get_price_timing(10)
                 get_10_quotes_timings.append(totaltime)
@@ -74,7 +74,7 @@ class LatencyTest():
             get_50_quotes_timings = []
             print ("\nGET 50 Quotes")
             for i in range(0, self.num_trials):
-                time.sleep(0.1)
+                time.sleep(0.05)
                 # GET 50 quotes
                 totaltime = self.get_price_timing(50)
                 get_50_quotes_timings.append(totaltime)
@@ -82,7 +82,7 @@ class LatencyTest():
             get_100_quotes_timings = []
             print ("\nGET 100 Quotes")
             for i in range(0, self.num_trials):
-                time.sleep(0.1)
+                time.sleep(0.05)
                 # GET 100 quotes
                 totaltime = self.get_price_timing(100)
                 get_100_quotes_timings.append(totaltime)
@@ -90,7 +90,7 @@ class LatencyTest():
             get_10_trades_timings = []
             print ("\nGET 10 TRADES")
             for i in range(0, self.num_trials):
-                time.sleep(0.1)
+                time.sleep(0.05)
                 # GET 10 TRADES
                 totaltime = self.get_trades_timing(10)
                 get_10_trades_timings.append(totaltime)
@@ -98,7 +98,7 @@ class LatencyTest():
             get_50_trades_timings = []  
             print ("\nGET 50 TRADES")
             for i in range(0, self.num_trials):
-                time.sleep(0.1)
+                time.sleep(0.05)
                 # GET 50 TRADES
                 totaltime = self.get_trades_timing(50)
                 get_50_trades_timings.append(totaltime)
@@ -106,7 +106,7 @@ class LatencyTest():
             get_100_trades_timings = []
             print ("\nGET 100 TRADES")
             for i in range(0, self.num_trials):
-                time.sleep(0.1)
+                time.sleep(0.05)
                 # GET 100 TRADES
                 totaltime = self.get_trades_timing(100)
                 get_100_trades_timings.append(totaltime)
@@ -114,7 +114,7 @@ class LatencyTest():
             get_500_trades_timings = []  
             print ("\nGET 500 TRADES")
             for i in range(0, self.num_trials):
-                time.sleep(0.1)
+                time.sleep(0.05)
                 # GET 500 TRADES
                 totaltime = self.get_trades_timing(500)
                 get_500_trades_timings.append(totaltime)
