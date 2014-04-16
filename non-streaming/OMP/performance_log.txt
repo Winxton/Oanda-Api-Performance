@@ -1,0 +1,507 @@
+Script started on Wed 16 Apr 2014 11:56:18 AM EDT
+]0;wwu@wwu-ud:~/api/performance/api-performance-test/non-streaming/OMPwwu@wwu-ud:~/api/performance/api-performance-test/non-streaming/OMP$ java -cp '.:oanda_fxtra de_implementation-2.5.4.jar' performance
+API proxy version          : 2.5.4
+API implementation jar     : http://dynamic-api.oanda.com/oanda_fxtrade_implementation.jar
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2014-04-16 11:56:22.936 -0400 I [main] Connection manager: using proxy=none for connection to fxserver02-cr.oanda.com on port=9700
+2014-04-16 11:56:22.937 -0400 I [main] - connecting to fxserver02-cr.oanda.com/204.93.159.166: 9700
+2014-04-16 11:56:23.175 -0400 I [main] sent seqid=0 /fxtrade/cr/LoginRequest at 1397663783 in 90 ms
+2014-04-16 11:56:23.248 -0400 I [DispatcherThread] received seqid=0 /fxtrade/cr/LoginReply sendtime=1397663783 uniqueMsgId=CRgamecs01_135341783181408
+2014-04-16 11:56:23.320 -0400 I [main] sent seqid=1 /fxtrade/fxe/UserDataRequest at 1397663783 in 61 ms
+2014-04-16 11:56:23.341 -0400 I [DispatcherThread] received seqid=1 /fxtrade/fxe/FXEResponse sendtime=1397663783 uniqueMsgId=CRgamecs01_135341783326147
+2014-04-16 11:56:23.569 -0400 I [main] sent seqid=2 /fxtrade/fxe/SymbolsRequest at 1397663783 in 1 ms
+2014-04-16 11:56:23.607 -0400 I [DispatcherThread] received seqid=2 /fxtrade/fxe/FXEResponse sendtime=1397663783 uniqueMsgId=CRgamecs01_135341783575052
+2014-04-16 11:56:23.688 -0400 I [main] sent seqid=3 /fxtrade/fxe/StreamRequest at 1397663783 in 4 ms
+2014-04-16 11:56:23.708 -0400 I [DispatcherThread] received seqid=3 /fxtrade/fxe/FXEResponse sendtime=1397663783 uniqueMsgId=CRgamecs01_135341783694651
+2014-04-16 11:56:23.773 -0400 I [main] sent seqid=4 /fxtrade/notification/NotificationRegistration at 1397663783 in 8 ms
+2014-04-16 11:56:23.795 -0400 I [DispatcherThread] received seqid=4 /fxtrade/notification/NotificationRegistrationReply sendtime=1397663783
+2014-04-16 11:56:23.802 -0400 I [main] sent seqid=5 /fxtrade/fxe/GetInstrumentMarginRateRequest at 1397663783 in 0 ms
+2014-04-16 11:56:23.822 -0400 I [DispatcherThread] received seqid=5 /fxtrade/fxe/FXEResponse sendtime=1397663783 uniqueMsgId=CRgamecs01_135341783808918
+2014-04-16 11:56:23.830 -0400 I [PollThread] sent seqid=6 /fxtrade/fxe/StreamRequest at 1397663783 in 1 ms
+2014-04-16 11:56:23.830 -0400 I [KeepAliveThread] sent seqid=7 /fxtrade/cr/PingRequest at 1397663783 in 1 ms
+2014-04-16 11:56:23.846 -0400 I [DispatcherThread] received seqid=6 /fxtrade/fxe/FXEResponse sendtime=1397663783 uniqueMsgId=CRgamecs01_135341783835916
+2014-04-16 11:56:23.860 -0400 I [DispatcherThread] received seqid=7 /fxtrade/cr/PingReply sendtime=1397663783 uniqueMsgId=CRgamecs01_135341783850834
+2014-04-16 11:56:24.831 -0400 I [main] sent seqid=8 /fxtrade/fxe/BulkCloseRequest at 1397663784 in 1 ms
+2014-04-16 11:56:24.849 -0400 I [DispatcherThread] received seqid=8 /fxtrade/fxe/FXEResponse sendtime=1397663784 uniqueMsgId=CRgamecs01_135341784837187
+2014-04-16 11:56:24.854 -0400 I [main] sent seqid=9 /fxtrade/fxe/RecentTransactionsRequest at 1397663784 in 1 ms
+2014-04-16 11:56:24.873 -0400 I [DispatcherThread] received seqid=9 /fxtrade/fxe/FXEResponse sendtime=1397663784 uniqueMsgId=CRgamecs01_135341784860183
+2014-04-16 11:56:25.888 -0400 I [main] sent seqid=10 /fxtrade/fxe/MarketOrderRequest at 1397663785 in 1 ms
+2014-04-16 11:56:25.911 -0400 I [DispatcherThread] received seqid=10 /fxtrade/fxe/FXEResponse sendtime=1397663785 uniqueMsgId=CRgamecs01_135341785896096
+2014-04-16 11:56:26.008 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663785
+2014-04-16 11:56:26.010 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663785
+2014-04-16 11:56:26.861 -0400 I [KeepAliveThread] sent seqid=11 /fxtrade/cr/PingRequest at 1397663786 in 0 ms
+2014-04-16 11:56:26.877 -0400 I [DispatcherThread] received seqid=11 /fxtrade/cr/PingReply sendtime=1397663786 uniqueMsgId=CRgamecs01_135341786867597
+2014-04-16 11:56:26.921 -0400 I [main] sent seqid=12 /fxtrade/fxe/CloseTradeRequest at 1397663786 in 1 ms
+2014-04-16 11:56:26.940 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663786
+2014-04-16 11:56:27.040 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663786
+2014-04-16 11:56:27.042 -0400 I [DispatcherThread] received seqid=12 /fxtrade/fxe/FXEResponse sendtime=1397663786 uniqueMsgId=CRgamecs01_135341786926860
+2014-04-16 11:56:28.047 -0400 I [main] sent seqid=13 /fxtrade/fxe/MarketOrderRequest at 1397663788 in 1 ms
+2014-04-16 11:56:28.069 -0400 I [DispatcherThread] received seqid=13 /fxtrade/fxe/FXEResponse sendtime=1397663788 uniqueMsgId=CRgamecs01_135341788052797
+2014-04-16 11:56:28.165 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663788
+2014-04-16 11:56:28.166 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663788
+2014-04-16 11:56:29.073 -0400 I [main] sent seqid=14 /fxtrade/fxe/CloseTradeRequest at 1397663789 in 1 ms
+2014-04-16 11:56:29.093 -0400 I [DispatcherThread] received seqid=14 /fxtrade/fxe/FXEResponse sendtime=1397663789 uniqueMsgId=CRgamecs01_135341789079042
+2014-04-16 11:56:29.197 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663789
+2014-04-16 11:56:29.198 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663789
+2014-04-16 11:56:29.879 -0400 I [KeepAliveThread] sent seqid=15 /fxtrade/cr/PingRequest at 1397663789 in 0 ms
+2014-04-16 11:56:29.894 -0400 I [DispatcherThread] received seqid=15 /fxtrade/cr/PingReply sendtime=1397663789 uniqueMsgId=CRgamecs01_135341789885350
+2014-04-16 11:56:30.096 -0400 I [main] sent seqid=16 /fxtrade/fxe/MarketOrderRequest at 1397663790 in 1 ms
+2014-04-16 11:56:30.118 -0400 I [DispatcherThread] received seqid=16 /fxtrade/fxe/FXEResponse sendtime=1397663790 uniqueMsgId=CRgamecs01_135341790102858
+2014-04-16 11:56:30.218 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663790
+2014-04-16 11:56:30.219 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663790
+2014-04-16 11:56:31.121 -0400 I [main] sent seqid=17 /fxtrade/fxe/CloseTradeRequest at 1397663791 in 0 ms
+2014-04-16 11:56:31.141 -0400 I [DispatcherThread] received seqid=17 /fxtrade/fxe/FXEResponse sendtime=1397663791 uniqueMsgId=CRgamecs01_135341791127531
+2014-04-16 11:56:31.240 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663791
+2014-04-16 11:56:31.241 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663791
+2014-04-16 11:56:32.144 -0400 I [main] sent seqid=18 /fxtrade/fxe/MarketOrderRequest at 1397663792 in 1 ms
+2014-04-16 11:56:32.166 -0400 I [DispatcherThread] received seqid=18 /fxtrade/fxe/FXEResponse sendtime=1397663792 uniqueMsgId=CRgamecs01_135341792150439
+2014-04-16 11:56:32.265 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663792
+2014-04-16 11:56:32.267 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663792
+2014-04-16 11:56:32.896 -0400 I [KeepAliveThread] sent seqid=19 /fxtrade/cr/PingRequest at 1397663792 in 0 ms
+2014-04-16 11:56:32.918 -0400 I [DispatcherThread] received seqid=19 /fxtrade/cr/PingReply sendtime=1397663792 uniqueMsgId=CRgamecs01_135341792904398
+2014-04-16 11:56:33.169 -0400 I [main] sent seqid=20 /fxtrade/fxe/CloseTradeRequest at 1397663793 in 0 ms
+2014-04-16 11:56:33.188 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663793
+2014-04-16 11:56:33.290 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663793
+2014-04-16 11:56:33.291 -0400 I [DispatcherThread] received seqid=20 /fxtrade/fxe/FXEResponse sendtime=1397663793 uniqueMsgId=CRgamecs01_135341793175518
+2014-04-16 11:56:34.295 -0400 I [main] sent seqid=21 /fxtrade/fxe/MarketOrderRequest at 1397663794 in 1 ms
+2014-04-16 11:56:34.315 -0400 I [DispatcherThread] received seqid=21 /fxtrade/fxe/FXEResponse sendtime=1397663794 uniqueMsgId=CRgamecs01_135341794301127
+2014-04-16 11:56:34.413 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663794
+2014-04-16 11:56:34.414 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663794
+2014-04-16 11:56:35.319 -0400 I [main] sent seqid=22 /fxtrade/fxe/CloseTradeRequest at 1397663795 in 1 ms
+2014-04-16 11:56:35.338 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663795
+2014-04-16 11:56:35.442 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663795
+2014-04-16 11:56:35.444 -0400 I [DispatcherThread] received seqid=22 /fxtrade/fxe/FXEResponse sendtime=1397663795 uniqueMsgId=CRgamecs01_135341795325362
+2014-04-16 11:56:35.920 -0400 I [KeepAliveThread] sent seqid=23 /fxtrade/cr/PingRequest at 1397663795 in 0 ms
+2014-04-16 11:56:35.935 -0400 I [DispatcherThread] received seqid=23 /fxtrade/cr/PingReply sendtime=1397663795 uniqueMsgId=CRgamecs01_135341795926393
+2014-04-16 11:56:36.447 -0400 I [main] sent seqid=24 /fxtrade/fxe/MarketOrderRequest at 1397663796 in 1 ms
+2014-04-16 11:56:36.468 -0400 I [DispatcherThread] received seqid=24 /fxtrade/fxe/FXEResponse sendtime=1397663796 uniqueMsgId=CRgamecs01_135341796453582
+2014-04-16 11:56:36.568 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663796
+2014-04-16 11:56:36.569 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663796
+2014-04-16 11:56:37.472 -0400 I [main] sent seqid=25 /fxtrade/fxe/CloseTradeRequest at 1397663797 in 1 ms
+2014-04-16 11:56:37.501 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663797
+2014-04-16 11:56:37.601 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663797
+2014-04-16 11:56:37.602 -0400 I [DispatcherThread] received seqid=25 /fxtrade/fxe/FXEResponse sendtime=1397663797 uniqueMsgId=CRgamecs01_135341797484665
+2014-04-16 11:56:38.605 -0400 I [main] sent seqid=26 /fxtrade/fxe/MarketOrderRequest at 1397663798 in 0 ms
+2014-04-16 11:56:38.625 -0400 I [DispatcherThread] received seqid=26 /fxtrade/fxe/FXEResponse sendtime=1397663798 uniqueMsgId=CRgamecs01_135341798612172
+2014-04-16 11:56:38.725 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663798
+2014-04-16 11:56:38.726 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663798
+2014-04-16 11:56:38.937 -0400 I [KeepAliveThread] sent seqid=27 /fxtrade/cr/PingRequest at 1397663798 in 1 ms
+2014-04-16 11:56:38.952 -0400 I [DispatcherThread] received seqid=27 /fxtrade/cr/PingReply sendtime=1397663798 uniqueMsgId=CRgamecs01_135341798943143
+2014-04-16 11:56:39.629 -0400 I [main] sent seqid=28 /fxtrade/fxe/CloseTradeRequest at 1397663799 in 1 ms
+2014-04-16 11:56:39.649 -0400 I [DispatcherThread] received seqid=28 /fxtrade/fxe/FXEResponse sendtime=1397663799 uniqueMsgId=CRgamecs01_135341799635108
+2014-04-16 11:56:39.748 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663799
+2014-04-16 11:56:39.749 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663799
+2014-04-16 11:56:40.652 -0400 I [main] sent seqid=29 /fxtrade/fxe/MarketOrderRequest at 1397663800 in 0 ms
+2014-04-16 11:56:40.674 -0400 I [DispatcherThread] received seqid=29 /fxtrade/fxe/FXEResponse sendtime=1397663800 uniqueMsgId=CRgamecs01_135341800658620
+2014-04-16 11:56:40.773 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663800
+2014-04-16 11:56:40.774 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663800
+2014-04-16 11:56:41.685 -0400 I [main] sent seqid=30 /fxtrade/fxe/CloseTradeRequest at 1397663801 in 1 ms
+2014-04-16 11:56:41.705 -0400 I [DispatcherThread] received seqid=30 /fxtrade/fxe/FXEResponse sendtime=1397663801 uniqueMsgId=CRgamecs01_135341801691275
+2014-04-16 11:56:41.805 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663801
+2014-04-16 11:56:41.806 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663801
+2014-04-16 11:56:41.954 -0400 I [KeepAliveThread] sent seqid=31 /fxtrade/cr/PingRequest at 1397663801 in 1 ms
+2014-04-16 11:56:41.979 -0400 I [DispatcherThread] received seqid=31 /fxtrade/cr/PingReply sendtime=1397663801 uniqueMsgId=CRgamecs01_135341801966691
+2014-04-16 11:56:42.711 -0400 I [main] sent seqid=32 /fxtrade/fxe/MarketOrderRequest at 1397663802 in 1 ms
+2014-04-16 11:56:42.731 -0400 I [DispatcherThread] received seqid=32 /fxtrade/fxe/FXEResponse sendtime=1397663802 uniqueMsgId=CRgamecs01_135341802717195
+2014-04-16 11:56:42.831 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663802
+2014-04-16 11:56:42.831 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663802
+2014-04-16 11:56:43.734 -0400 I [main] sent seqid=33 /fxtrade/fxe/CloseTradeRequest at 1397663803 in 0 ms
+2014-04-16 11:56:43.754 -0400 I [DispatcherThread] received seqid=33 /fxtrade/fxe/FXEResponse sendtime=1397663803 uniqueMsgId=CRgamecs01_135341803740792
+2014-04-16 11:56:43.853 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663803
+2014-04-16 11:56:43.854 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663803
+2014-04-16 11:56:44.757 -0400 I [main] sent seqid=34 /fxtrade/fxe/MarketOrderRequest at 1397663804 in 1 ms
+2014-04-16 11:56:44.779 -0400 I [DispatcherThread] received seqid=34 /fxtrade/fxe/FXEResponse sendtime=1397663804 uniqueMsgId=CRgamecs01_135341804764119
+2014-04-16 11:56:44.878 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663804
+2014-04-16 11:56:44.879 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663804
+2014-04-16 11:56:44.981 -0400 I [KeepAliveThread] sent seqid=35 /fxtrade/cr/PingRequest at 1397663804 in 1 ms
+2014-04-16 11:56:45.004 -0400 I [DispatcherThread] received seqid=35 /fxtrade/cr/PingReply sendtime=1397663804 uniqueMsgId=CRgamecs01_135341804987251
+2014-04-16 11:56:45.783 -0400 I [main] sent seqid=36 /fxtrade/fxe/CloseTradeRequest at 1397663805 in 1 ms
+2014-04-16 11:56:45.806 -0400 I [DispatcherThread] received seqid=36 /fxtrade/fxe/FXEResponse sendtime=1397663805 uniqueMsgId=CRgamecs01_135341805789530
+2014-04-16 11:56:45.911 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663805
+2014-04-16 11:56:45.912 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663805
+2014-04-16 11:56:46.809 -0400 I [main] sent seqid=37 /fxtrade/fxe/MarketOrderRequest at 1397663806 in 0 ms
+2014-04-16 11:56:46.833 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663806
+2014-04-16 11:56:46.943 -0400 I [DispatcherThread] received seqid=37 /fxtrade/fxe/FXEResponse sendtime=1397663806 uniqueMsgId=CRgamecs01_135341806817119
+2014-04-16 11:56:46.944 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663806
+2014-04-16 11:56:47.946 -0400 I [main] sent seqid=38 /fxtrade/fxe/CloseTradeRequest at 1397663807 in 1 ms
+2014-04-16 11:56:47.966 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663807
+2014-04-16 11:56:48.008 -0400 I [KeepAliveThread] sent seqid=39 /fxtrade/cr/PingRequest at 1397663808 in 0 ms
+2014-04-16 11:56:48.024 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663807
+2014-04-16 11:56:48.026 -0400 I [DispatcherThread] received seqid=38 /fxtrade/fxe/FXEResponse sendtime=1397663807 uniqueMsgId=CRgamecs01_135341807952365
+2014-04-16 11:56:48.124 -0400 I [DispatcherThread] received seqid=39 /fxtrade/cr/PingReply sendtime=1397663808 uniqueMsgId=CRgamecs01_135341808014900
+2014-04-16 11:56:49.029 -0400 I [main] sent seqid=40 /fxtrade/fxe/MarketOrderRequest at 1397663809 in 0 ms
+2014-04-16 11:56:49.051 -0400 I [DispatcherThread] received seqid=40 /fxtrade/fxe/FXEResponse sendtime=1397663809 uniqueMsgId=CRgamecs01_135341809035878
+2014-04-16 11:56:49.148 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663809
+2014-04-16 11:56:49.149 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663809
+2014-04-16 11:56:50.054 -0400 I [main] sent seqid=41 /fxtrade/fxe/CloseTradeRequest at 1397663810 in 1 ms
+2014-04-16 11:56:50.075 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663810
+2014-04-16 11:56:50.176 -0400 I [DispatcherThread] received seqid=41 /fxtrade/fxe/FXEResponse sendtime=1397663810 uniqueMsgId=CRgamecs01_135341810060846
+2014-04-16 11:56:50.178 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663810
+2014-04-16 11:56:51.126 -0400 I [KeepAliveThread] sent seqid=42 /fxtrade/cr/PingRequest at 1397663811 in 1 ms
+2014-04-16 11:56:51.142 -0400 I [DispatcherThread] received seqid=42 /fxtrade/cr/PingReply sendtime=1397663811 uniqueMsgId=CRgamecs01_135341811132175
+2014-04-16 11:56:51.179 -0400 I [main] sent seqid=43 /fxtrade/fxe/MarketOrderRequest at 1397663811 in 0 ms
+2014-04-16 11:56:51.198 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663811
+2014-04-16 11:56:51.298 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663811
+2014-04-16 11:56:51.300 -0400 I [DispatcherThread] received seqid=43 /fxtrade/fxe/FXEResponse sendtime=1397663811 uniqueMsgId=CRgamecs01_135341811185690
+2014-04-16 11:56:52.303 -0400 I [main] sent seqid=44 /fxtrade/fxe/CloseTradeRequest at 1397663812 in 1 ms
+2014-04-16 11:56:52.342 -0400 I [DispatcherThread] received seqid=44 /fxtrade/fxe/FXEResponse sendtime=1397663812 uniqueMsgId=CRgamecs01_135341812310499
+2014-04-16 11:56:52.445 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663812
+2014-04-16 11:56:52.446 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663812
+2014-04-16 11:56:53.345 -0400 I [main] sent seqid=45 /fxtrade/fxe/MarketOrderRequest at 1397663813 in 0 ms
+2014-04-16 11:56:53.364 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663813
+2014-04-16 11:56:53.466 -0400 I [DispatcherThread] received seqid=45 /fxtrade/fxe/FXEResponse sendtime=1397663813 uniqueMsgId=CRgamecs01_135341813351865
+2014-04-16 11:56:53.468 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663813
+2014-04-16 11:56:54.144 -0400 I [KeepAliveThread] sent seqid=46 /fxtrade/cr/PingRequest at 1397663814 in 1 ms
+2014-04-16 11:56:54.159 -0400 I [DispatcherThread] received seqid=46 /fxtrade/cr/PingReply sendtime=1397663814 uniqueMsgId=CRgamecs01_135341814149829
+2014-04-16 11:56:54.469 -0400 I [main] sent seqid=47 /fxtrade/fxe/CloseTradeRequest at 1397663814 in 0 ms
+2014-04-16 11:56:54.489 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663814
+2014-04-16 11:56:54.590 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663814
+2014-04-16 11:56:54.591 -0400 I [DispatcherThread] received seqid=47 /fxtrade/fxe/FXEResponse sendtime=1397663814 uniqueMsgId=CRgamecs01_135341814476054
+2014-04-16 11:56:55.594 -0400 I [main] sent seqid=48 /fxtrade/fxe/MarketOrderRequest at 1397663815 in 1 ms
+2014-04-16 11:56:55.615 -0400 I [DispatcherThread] received seqid=48 /fxtrade/fxe/FXEResponse sendtime=1397663815 uniqueMsgId=CRgamecs01_135341815600503
+2014-04-16 11:56:55.715 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663815
+2014-04-16 11:56:55.716 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663815
+2014-04-16 11:56:56.618 -0400 I [main] sent seqid=49 /fxtrade/fxe/CloseTradeRequest at 1397663816 in 1 ms
+2014-04-16 11:56:56.642 -0400 I [DispatcherThread] received seqid=49 /fxtrade/fxe/FXEResponse sendtime=1397663816 uniqueMsgId=CRgamecs01_135341816627433
+2014-04-16 11:56:56.741 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663816
+2014-04-16 11:56:56.742 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663816
+2014-04-16 11:56:57.160 -0400 I [KeepAliveThread] sent seqid=50 /fxtrade/cr/PingRequest at 1397663817 in 0 ms
+2014-04-16 11:56:57.175 -0400 I [DispatcherThread] received seqid=50 /fxtrade/cr/PingReply sendtime=1397663817 uniqueMsgId=CRgamecs01_135341817166037
+2014-04-16 11:56:57.645 -0400 I [main] sent seqid=51 /fxtrade/fxe/MarketOrderRequest at 1397663817 in 0 ms
+2014-04-16 11:56:57.665 -0400 I [DispatcherThread] received seqid=51 /fxtrade/fxe/FXEResponse sendtime=1397663817 uniqueMsgId=CRgamecs01_135341817651357
+2014-04-16 11:56:57.765 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663817
+2014-04-16 11:56:57.766 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663817
+2014-04-16 11:56:58.668 -0400 I [main] sent seqid=52 /fxtrade/fxe/CloseTradeRequest at 1397663818 in 0 ms
+2014-04-16 11:56:58.687 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663818
+2014-04-16 11:56:58.789 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663818
+2014-04-16 11:56:58.791 -0400 I [DispatcherThread] received seqid=52 /fxtrade/fxe/FXEResponse sendtime=1397663818 uniqueMsgId=CRgamecs01_135341818674297
+2014-04-16 11:56:59.793 -0400 I [main] sent seqid=53 /fxtrade/fxe/MarketOrderRequest at 1397663819 in 0 ms
+2014-04-16 11:56:59.820 -0400 I [DispatcherThread] received seqid=53 /fxtrade/fxe/FXEResponse sendtime=1397663819 uniqueMsgId=CRgamecs01_135341819800236
+2014-04-16 11:56:59.914 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663819
+2014-04-16 11:56:59.915 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663819
+2014-04-16 11:57:00.177 -0400 I [KeepAliveThread] sent seqid=54 /fxtrade/cr/PingRequest at 1397663820 in 1 ms
+2014-04-16 11:57:00.199 -0400 I [DispatcherThread] received seqid=54 /fxtrade/cr/PingReply sendtime=1397663820 uniqueMsgId=CRgamecs01_135341820186122
+2014-04-16 11:57:00.823 -0400 I [main] sent seqid=55 /fxtrade/fxe/CloseTradeRequest at 1397663820 in 1 ms
+2014-04-16 11:57:00.850 -0400 I [DispatcherThread] received seqid=55 /fxtrade/fxe/FXEResponse sendtime=1397663820 uniqueMsgId=CRgamecs01_135341820836395
+2014-04-16 11:57:00.953 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663820
+2014-04-16 11:57:00.954 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663820
+2014-04-16 11:57:01.853 -0400 I [main] sent seqid=56 /fxtrade/fxe/MarketOrderRequest at 1397663821 in 1 ms
+2014-04-16 11:57:01.900 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663821
+2014-04-16 11:57:01.996 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663821
+2014-04-16 11:57:01.998 -0400 I [DispatcherThread] received seqid=56 /fxtrade/fxe/FXEResponse sendtime=1397663821 uniqueMsgId=CRgamecs01_135341821882615
+2014-04-16 11:57:03.001 -0400 I [main] sent seqid=57 /fxtrade/fxe/CloseTradeRequest at 1397663823 in 0 ms
+2014-04-16 11:57:03.020 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663823
+2014-04-16 11:57:03.121 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663823
+2014-04-16 11:57:03.123 -0400 I [DispatcherThread] received seqid=57 /fxtrade/fxe/FXEResponse sendtime=1397663823 uniqueMsgId=CRgamecs01_135341823007417
+2014-04-16 11:57:03.201 -0400 I [KeepAliveThread] sent seqid=58 /fxtrade/cr/PingRequest at 1397663823 in 1 ms
+2014-04-16 11:57:03.218 -0400 I [DispatcherThread] received seqid=58 /fxtrade/cr/PingReply sendtime=1397663823 uniqueMsgId=CRgamecs01_135341823207599
+2014-04-16 11:57:04.126 -0400 I [main] sent seqid=59 /fxtrade/fxe/MarketOrderRequest at 1397663824 in 1 ms
+2014-04-16 11:57:04.146 -0400 I [DispatcherThread] received seqid=59 /fxtrade/fxe/FXEResponse sendtime=1397663824 uniqueMsgId=CRgamecs01_135341824132009
+2014-04-16 11:57:04.245 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663824
+2014-04-16 11:57:04.246 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663824
+2014-04-16 11:57:05.149 -0400 I [main] sent seqid=60 /fxtrade/fxe/CloseTradeRequest at 1397663825 in 1 ms
+2014-04-16 11:57:05.170 -0400 I [DispatcherThread] received seqid=60 /fxtrade/fxe/FXEResponse sendtime=1397663825 uniqueMsgId=CRgamecs01_135341825154906
+2014-04-16 11:57:05.270 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663825
+2014-04-16 11:57:05.271 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663825
+2014-04-16 11:57:06.173 -0400 I [main] sent seqid=61 /fxtrade/fxe/MarketOrderRequest at 1397663826 in 1 ms
+2014-04-16 11:57:06.193 -0400 I [DispatcherThread] received seqid=61 /fxtrade/fxe/FXEResponse sendtime=1397663826 uniqueMsgId=CRgamecs01_135341826178946
+2014-04-16 11:57:06.219 -0400 I [KeepAliveThread] sent seqid=62 /fxtrade/cr/PingRequest at 1397663826 in 1 ms
+2014-04-16 11:57:06.233 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663826
+2014-04-16 11:57:06.234 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663826
+2014-04-16 11:57:06.334 -0400 I [DispatcherThread] received seqid=62 /fxtrade/cr/PingReply sendtime=1397663826 uniqueMsgId=CRgamecs01_135341826224904
+2014-04-16 11:57:07.195 -0400 I [main] sent seqid=63 /fxtrade/fxe/CloseTradeRequest at 1397663827 in 0 ms
+2014-04-16 11:57:07.219 -0400 I [DispatcherThread] received seqid=63 /fxtrade/fxe/FXEResponse sendtime=1397663827 uniqueMsgId=CRgamecs01_135341827204914
+2014-04-16 11:57:07.318 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663827
+2014-04-16 11:57:07.319 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663827
+2014-04-16 11:57:08.222 -0400 I [main] sent seqid=64 /fxtrade/fxe/MarketOrderRequest at 1397663828 in 1 ms
+2014-04-16 11:57:08.241 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663828
+2014-04-16 11:57:08.341 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663828
+2014-04-16 11:57:08.343 -0400 I [DispatcherThread] received seqid=64 /fxtrade/fxe/FXEResponse sendtime=1397663828 uniqueMsgId=CRgamecs01_135341828228385
+2014-04-16 11:57:09.336 -0400 I [KeepAliveThread] sent seqid=65 /fxtrade/cr/PingRequest at 1397663829 in 0 ms
+2014-04-16 11:57:09.345 -0400 I [main] sent seqid=66 /fxtrade/fxe/CloseTradeRequest at 1397663829 in 0 ms
+2014-04-16 11:57:09.363 -0400 I [DispatcherThread] received seqid=65 /fxtrade/cr/PingReply sendtime=1397663829 uniqueMsgId=CRgamecs01_135341829349427
+2014-04-16 11:57:09.386 -0400 I [DispatcherThread] received seqid=66 /fxtrade/fxe/FXEResponse sendtime=1397663829 uniqueMsgId=CRgamecs01_135341829371605
+2014-04-16 11:57:09.488 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663829
+2014-04-16 11:57:09.488 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663829
+2014-04-16 11:57:10.388 -0400 I [main] sent seqid=67 /fxtrade/fxe/MarketOrderRequest at 1397663830 in 0 ms
+2014-04-16 11:57:10.416 -0400 I [DispatcherThread] received seqid=67 /fxtrade/fxe/FXEResponse sendtime=1397663830 uniqueMsgId=CRgamecs01_135341830398333
+2014-04-16 11:57:10.512 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663830
+2014-04-16 11:57:10.512 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663830
+2014-04-16 11:57:11.419 -0400 I [main] sent seqid=68 /fxtrade/fxe/CloseTradeRequest at 1397663831 in 1 ms
+2014-04-16 11:57:12.364 -0400 I [KeepAliveThread] sent seqid=69 /fxtrade/cr/PingRequest at 1397663832 in 0 ms
+2014-04-16 11:57:12.639 -0400 I [DispatcherThread] received seqid=68 /fxtrade/fxe/FXEResponse sendtime=1397663831 uniqueMsgId=CRgamecs01_135341831425274
+2014-04-16 11:57:12.640 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663831
+2014-04-16 11:57:12.641 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663831
+2014-04-16 11:57:12.642 -0400 I [DispatcherThread] received seqid=69 /fxtrade/cr/PingReply sendtime=1397663832 uniqueMsgId=CRgamecs01_135341832370489
+2014-04-16 11:57:13.641 -0400 I [main] sent seqid=70 /fxtrade/fxe/MarketOrderRequest at 1397663833 in 0 ms
+2014-04-16 11:57:13.660 -0400 I [DispatcherThread] received seqid=70 /fxtrade/fxe/FXEResponse sendtime=1397663833 uniqueMsgId=CRgamecs01_135341833647856
+2014-04-16 11:57:13.763 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663833
+2014-04-16 11:57:13.764 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663833
+2014-04-16 11:57:14.663 -0400 I [main] sent seqid=71 /fxtrade/fxe/CloseTradeRequest at 1397663834 in 1 ms
+2014-04-16 11:57:14.683 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663834
+2014-04-16 11:57:14.784 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663834
+2014-04-16 11:57:14.785 -0400 I [DispatcherThread] received seqid=71 /fxtrade/fxe/FXEResponse sendtime=1397663834 uniqueMsgId=CRgamecs01_135341834670426
+2014-04-16 11:57:15.643 -0400 I [KeepAliveThread] sent seqid=72 /fxtrade/cr/PingRequest at 1397663835 in 0 ms
+2014-04-16 11:57:15.788 -0400 I [main] sent seqid=73 /fxtrade/fxe/MarketOrderRequest at 1397663835 in 1 ms
+2014-04-16 11:57:15.883 -0400 I [DispatcherThread] received seqid=72 /fxtrade/cr/PingReply sendtime=1397663835 uniqueMsgId=CRgamecs01_135341835873973
+2014-04-16 11:57:15.903 -0400 I [DispatcherThread] received seqid=73 /fxtrade/fxe/FXEResponse sendtime=1397663835 uniqueMsgId=CRgamecs01_135341835889224
+2014-04-16 11:57:16.004 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663835
+2014-04-16 11:57:16.005 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663835
+2014-04-16 11:57:16.906 -0400 I [main] sent seqid=74 /fxtrade/fxe/CloseTradeRequest at 1397663836 in 1 ms
+2014-04-16 11:57:16.927 -0400 I [DispatcherThread] received seqid=74 /fxtrade/fxe/FXEResponse sendtime=1397663836 uniqueMsgId=CRgamecs01_135341836913685
+2014-04-16 11:57:17.027 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663836
+2014-04-16 11:57:17.028 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663836
+2014-04-16 11:57:17.929 -0400 I [main] sent seqid=75 /fxtrade/fxe/MarketOrderRequest at 1397663837 in 0 ms
+2014-04-16 11:57:17.948 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663837
+2014-04-16 11:57:18.048 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663837
+2014-04-16 11:57:18.049 -0400 I [DispatcherThread] received seqid=75 /fxtrade/fxe/FXEResponse sendtime=1397663837 uniqueMsgId=CRgamecs01_135341837935370
+2014-04-16 11:57:18.885 -0400 I [KeepAliveThread] sent seqid=76 /fxtrade/cr/PingRequest at 1397663838 in 0 ms
+2014-04-16 11:57:18.908 -0400 I [DispatcherThread] received seqid=76 /fxtrade/cr/PingReply sendtime=1397663838 uniqueMsgId=CRgamecs01_135341838898038
+2014-04-16 11:57:19.052 -0400 I [main] sent seqid=77 /fxtrade/fxe/CloseTradeRequest at 1397663839 in 1 ms
+2014-04-16 11:57:19.073 -0400 I [DispatcherThread] received seqid=77 /fxtrade/fxe/FXEResponse sendtime=1397663839 uniqueMsgId=CRgamecs01_135341839058257
+2014-04-16 11:57:19.172 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663839
+2014-04-16 11:57:19.173 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663839
+2014-04-16 11:57:20.075 -0400 I [main] sent seqid=78 /fxtrade/fxe/MarketOrderRequest at 1397663840 in 1 ms
+2014-04-16 11:57:20.095 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663840
+2014-04-16 11:57:20.195 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663840
+2014-04-16 11:57:20.196 -0400 I [DispatcherThread] received seqid=78 /fxtrade/fxe/FXEResponse sendtime=1397663840 uniqueMsgId=CRgamecs01_135341840081673
+2014-04-16 11:57:21.199 -0400 I [main] sent seqid=79 /fxtrade/fxe/CloseTradeRequest at 1397663841 in 1 ms
+2014-04-16 11:57:21.222 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663841
+2014-04-16 11:57:21.323 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663841
+2014-04-16 11:57:21.324 -0400 I [DispatcherThread] received seqid=79 /fxtrade/fxe/FXEResponse sendtime=1397663841 uniqueMsgId=CRgamecs01_135341841208470
+2014-04-16 11:57:21.910 -0400 I [KeepAliveThread] sent seqid=80 /fxtrade/cr/PingRequest at 1397663841 in 1 ms
+2014-04-16 11:57:21.925 -0400 I [DispatcherThread] received seqid=80 /fxtrade/cr/PingReply sendtime=1397663841 uniqueMsgId=CRgamecs01_135341841915741
+2014-04-16 11:57:22.326 -0400 I [main] sent seqid=81 /fxtrade/fxe/MarketOrderRequest at 1397663842 in 0 ms
+2014-04-16 11:57:22.349 -0400 I [DispatcherThread] received seqid=81 /fxtrade/fxe/FXEResponse sendtime=1397663842 uniqueMsgId=CRgamecs01_135341842332440
+2014-04-16 11:57:22.445 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663842
+2014-04-16 11:57:22.446 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663842
+2014-04-16 11:57:23.352 -0400 I [main] sent seqid=82 /fxtrade/fxe/CloseTradeRequest at 1397663843 in 1 ms
+2014-04-16 11:57:23.370 -0400 I [DispatcherThread] received seqid=82 /fxtrade/fxe/FXEResponse sendtime=1397663843 uniqueMsgId=CRgamecs01_135341843357653
+2014-04-16 11:57:23.472 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663843
+2014-04-16 11:57:23.473 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663843
+2014-04-16 11:57:24.373 -0400 I [main] sent seqid=83 /fxtrade/fxe/MarketOrderRequest at 1397663844 in 1 ms
+2014-04-16 11:57:24.392 -0400 I [DispatcherThread] received seqid=83 /fxtrade/fxe/FXEResponse sendtime=1397663844 uniqueMsgId=CRgamecs01_135341844378715
+2014-04-16 11:57:24.492 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663844
+2014-04-16 11:57:24.492 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663844
+2014-04-16 11:57:24.926 -0400 I [KeepAliveThread] sent seqid=84 /fxtrade/cr/PingRequest at 1397663844 in 0 ms
+2014-04-16 11:57:24.952 -0400 I [DispatcherThread] received seqid=84 /fxtrade/cr/PingReply sendtime=1397663844 uniqueMsgId=CRgamecs01_135341844942198
+2014-04-16 11:57:25.395 -0400 I [main] sent seqid=85 /fxtrade/fxe/CloseTradeRequest at 1397663845 in 1 ms
+2014-04-16 11:57:25.414 -0400 I [DispatcherThread] received seqid=85 /fxtrade/fxe/FXEResponse sendtime=1397663845 uniqueMsgId=CRgamecs01_135341845401236
+2014-04-16 11:57:25.515 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663845
+2014-04-16 11:57:25.515 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663845
+2014-04-16 11:57:26.416 -0400 I [main] sent seqid=86 /fxtrade/fxe/MarketOrderRequest at 1397663846 in 0 ms
+2014-04-16 11:57:26.437 -0400 I [DispatcherThread] received seqid=86 /fxtrade/fxe/FXEResponse sendtime=1397663846 uniqueMsgId=CRgamecs01_135341846423296
+2014-04-16 11:57:26.537 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663846
+2014-04-16 11:57:26.537 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663846
+2014-04-16 11:57:27.440 -0400 I [main] sent seqid=87 /fxtrade/fxe/CloseTradeRequest at 1397663847 in 1 ms
+2014-04-16 11:57:27.458 -0400 I [DispatcherThread] received seqid=87 /fxtrade/fxe/FXEResponse sendtime=1397663847 uniqueMsgId=CRgamecs01_135341847445691
+2014-04-16 11:57:27.558 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663847
+2014-04-16 11:57:27.559 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663847
+2014-04-16 11:57:27.954 -0400 I [KeepAliveThread] sent seqid=88 /fxtrade/cr/PingRequest at 1397663847 in 1 ms
+2014-04-16 11:57:27.970 -0400 I [DispatcherThread] received seqid=88 /fxtrade/cr/PingReply sendtime=1397663847 uniqueMsgId=CRgamecs01_135341847960341
+2014-04-16 11:57:28.460 -0400 I [main] sent seqid=89 /fxtrade/fxe/MarketOrderRequest at 1397663848 in 0 ms
+2014-04-16 11:57:28.480 -0400 I [DispatcherThread] received seqid=89 /fxtrade/fxe/FXEResponse sendtime=1397663848 uniqueMsgId=CRgamecs01_135341848466670
+2014-04-16 11:57:28.580 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663848
+2014-04-16 11:57:28.581 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663848
+2014-04-16 11:57:29.482 -0400 I [main] sent seqid=90 /fxtrade/fxe/CloseTradeRequest at 1397663849 in 0 ms
+2014-04-16 11:57:29.502 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663849
+2014-04-16 11:57:29.602 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663849
+2014-04-16 11:57:29.603 -0400 I [DispatcherThread] received seqid=90 /fxtrade/fxe/FXEResponse sendtime=1397663849 uniqueMsgId=CRgamecs01_135341849488851
+2014-04-16 11:57:30.606 -0400 I [main] sent seqid=91 /fxtrade/fxe/MarketOrderRequest at 1397663850 in 1 ms
+2014-04-16 11:57:30.625 -0400 I [DispatcherThread] received seqid=91 /fxtrade/fxe/FXEResponse sendtime=1397663850 uniqueMsgId=CRgamecs01_135341850611901
+2014-04-16 11:57:30.726 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663850
+2014-04-16 11:57:30.727 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663850
+2014-04-16 11:57:30.971 -0400 I [KeepAliveThread] sent seqid=92 /fxtrade/cr/PingRequest at 1397663850 in 0 ms
+2014-04-16 11:57:30.986 -0400 I [DispatcherThread] received seqid=92 /fxtrade/cr/PingReply sendtime=1397663850 uniqueMsgId=CRgamecs01_135341850977604
+2014-04-16 11:57:31.628 -0400 I [main] sent seqid=93 /fxtrade/fxe/CloseTradeRequest at 1397663851 in 1 ms
+2014-04-16 11:57:31.647 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663851
+2014-04-16 11:57:31.748 -0400 I [DispatcherThread] received seqid=93 /fxtrade/fxe/FXEResponse sendtime=1397663851 uniqueMsgId=CRgamecs01_135341851634323
+2014-04-16 11:57:31.749 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663851
+2014-04-16 11:57:32.750 -0400 I [main] sent seqid=94 /fxtrade/fxe/MarketOrderRequest at 1397663852 in 0 ms
+2014-04-16 11:57:32.771 -0400 I [DispatcherThread] received seqid=94 /fxtrade/fxe/FXEResponse sendtime=1397663852 uniqueMsgId=CRgamecs01_135341852756368
+2014-04-16 11:57:32.871 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663852
+2014-04-16 11:57:32.872 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663852
+2014-04-16 11:57:33.774 -0400 I [main] sent seqid=95 /fxtrade/fxe/CloseTradeRequest at 1397663853 in 0 ms
+2014-04-16 11:57:33.797 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663853
+2014-04-16 11:57:33.898 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663853
+2014-04-16 11:57:33.899 -0400 I [DispatcherThread] received seqid=95 /fxtrade/fxe/FXEResponse sendtime=1397663853 uniqueMsgId=CRgamecs01_135341853780315
+2014-04-16 11:57:33.988 -0400 I [KeepAliveThread] sent seqid=96 /fxtrade/cr/PingRequest at 1397663853 in 1 ms
+2014-04-16 11:57:34.004 -0400 I [DispatcherThread] received seqid=96 /fxtrade/cr/PingReply sendtime=1397663853 uniqueMsgId=CRgamecs01_135341853994013
+2014-04-16 11:57:34.902 -0400 I [main] sent seqid=97 /fxtrade/fxe/MarketOrderRequest at 1397663854 in 1 ms
+2014-04-16 11:57:34.922 -0400 I [DispatcherThread] received seqid=97 /fxtrade/fxe/FXEResponse sendtime=1397663854 uniqueMsgId=CRgamecs01_135341854907934
+2014-04-16 11:57:35.022 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663854
+2014-04-16 11:57:35.022 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663854
+2014-04-16 11:57:35.924 -0400 I [main] sent seqid=98 /fxtrade/fxe/CloseTradeRequest at 1397663855 in 0 ms
+2014-04-16 11:57:35.943 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663855
+2014-04-16 11:57:36.050 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663855
+2014-04-16 11:57:36.051 -0400 I [DispatcherThread] received seqid=98 /fxtrade/fxe/FXEResponse sendtime=1397663855 uniqueMsgId=CRgamecs01_135341855930304
+2014-04-16 11:57:37.005 -0400 I [KeepAliveThread] sent seqid=99 /fxtrade/cr/PingRequest at 1397663857 in 0 ms
+2014-04-16 11:57:37.020 -0400 I [DispatcherThread] received seqid=99 /fxtrade/cr/PingReply sendtime=1397663857 uniqueMsgId=CRgamecs01_135341857011436
+2014-04-16 11:57:37.053 -0400 I [main] sent seqid=100 /fxtrade/fxe/MarketOrderRequest at 1397663857 in 1 ms
+2014-04-16 11:57:37.072 -0400 I [DispatcherThread] received seqid=100 /fxtrade/fxe/FXEResponse sendtime=1397663857 uniqueMsgId=CRgamecs01_135341857059255
+2014-04-16 11:57:37.172 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663857
+2014-04-16 11:57:37.172 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663857
+2014-04-16 11:57:38.074 -0400 I [main] sent seqid=101 /fxtrade/fxe/CloseTradeRequest at 1397663858 in 0 ms
+2014-04-16 11:57:38.093 -0400 I [DispatcherThread] received seqid=101 /fxtrade/fxe/FXEResponse sendtime=1397663858 uniqueMsgId=CRgamecs01_135341858080257
+2014-04-16 11:57:38.193 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663858
+2014-04-16 11:57:38.194 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663858
+2014-04-16 11:57:39.095 -0400 I [main] sent seqid=102 /fxtrade/fxe/MarketOrderRequest at 1397663859 in 1 ms
+2014-04-16 11:57:39.116 -0400 I [DispatcherThread] received seqid=102 /fxtrade/fxe/FXEResponse sendtime=1397663859 uniqueMsgId=CRgamecs01_135341859101299
+2014-04-16 11:57:39.219 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663859
+2014-04-16 11:57:39.219 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663859
+2014-04-16 11:57:40.021 -0400 I [KeepAliveThread] sent seqid=103 /fxtrade/cr/PingRequest at 1397663860 in 0 ms
+2014-04-16 11:57:40.038 -0400 I [DispatcherThread] received seqid=103 /fxtrade/cr/PingReply sendtime=1397663860 uniqueMsgId=CRgamecs01_135341860029089
+2014-04-16 11:57:40.119 -0400 I [main] sent seqid=104 /fxtrade/fxe/CloseTradeRequest at 1397663860 in 1 ms
+2014-04-16 11:57:40.143 -0400 I [DispatcherThread] received seqid=104 /fxtrade/fxe/FXEResponse sendtime=1397663860 uniqueMsgId=CRgamecs01_135341860129721
+2014-04-16 11:57:40.243 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663860
+2014-04-16 11:57:40.243 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663860
+2014-04-16 11:57:41.145 -0400 I [main] sent seqid=105 /fxtrade/fxe/MarketOrderRequest at 1397663861 in 1 ms
+2014-04-16 11:57:41.183 -0400 I [DispatcherThread] received seqid=105 /fxtrade/fxe/FXEResponse sendtime=1397663861 uniqueMsgId=CRgamecs01_135341861155803
+2014-04-16 11:57:41.270 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663861
+2014-04-16 11:57:41.271 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663861
+2014-04-16 11:57:42.185 -0400 I [main] sent seqid=106 /fxtrade/fxe/CloseTradeRequest at 1397663862 in 0 ms
+2014-04-16 11:57:42.208 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663862
+2014-04-16 11:57:42.307 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663862
+2014-04-16 11:57:42.308 -0400 I [DispatcherThread] received seqid=106 /fxtrade/fxe/FXEResponse sendtime=1397663862 uniqueMsgId=CRgamecs01_135341862191793
+2014-04-16 11:57:43.039 -0400 I [KeepAliveThread] sent seqid=107 /fxtrade/cr/PingRequest at 1397663863 in 0 ms
+2014-04-16 11:57:43.054 -0400 I [DispatcherThread] received seqid=107 /fxtrade/cr/PingReply sendtime=1397663863 uniqueMsgId=CRgamecs01_135341863045013
+2014-04-16 11:57:43.310 -0400 I [main] sent seqid=108 /fxtrade/fxe/MarketOrderRequest at 1397663863 in 0 ms
+2014-04-16 11:57:43.331 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663863
+2014-04-16 11:57:43.431 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663863
+2014-04-16 11:57:43.432 -0400 I [DispatcherThread] received seqid=108 /fxtrade/fxe/FXEResponse sendtime=1397663863 uniqueMsgId=CRgamecs01_135341863316831
+2014-04-16 11:57:44.435 -0400 I [main] sent seqid=109 /fxtrade/fxe/CloseTradeRequest at 1397663864 in 1 ms
+2014-04-16 11:57:44.454 -0400 I [DispatcherThread] received seqid=109 /fxtrade/fxe/FXEResponse sendtime=1397663864 uniqueMsgId=CRgamecs01_135341864440975
+2014-04-16 11:57:44.554 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663864
+2014-04-16 11:57:44.555 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663864
+2014-04-16 11:57:45.456 -0400 I [main] sent seqid=110 /fxtrade/fxe/MarketOrderRequest at 1397663865 in 0 ms
+2014-04-16 11:57:45.477 -0400 I [DispatcherThread] received seqid=110 /fxtrade/fxe/FXEResponse sendtime=1397663865 uniqueMsgId=CRgamecs01_135341865463786
+2014-04-16 11:57:45.578 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663865
+2014-04-16 11:57:45.578 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663865
+2014-04-16 11:57:46.056 -0400 I [KeepAliveThread] sent seqid=111 /fxtrade/cr/PingRequest at 1397663866 in 1 ms
+2014-04-16 11:57:46.071 -0400 I [DispatcherThread] received seqid=111 /fxtrade/cr/PingReply sendtime=1397663866 uniqueMsgId=CRgamecs01_135341866061754
+2014-04-16 11:57:46.479 -0400 I [main] sent seqid=112 /fxtrade/fxe/CloseTradeRequest at 1397663866 in 0 ms
+2014-04-16 11:57:46.511 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663866
+2014-04-16 11:57:46.613 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663866
+2014-04-16 11:57:46.614 -0400 I [DispatcherThread] received seqid=112 /fxtrade/fxe/FXEResponse sendtime=1397663866 uniqueMsgId=CRgamecs01_135341866497562
+2014-04-16 11:57:47.616 -0400 I [main] sent seqid=113 /fxtrade/fxe/MarketOrderRequest at 1397663867 in 1 ms
+2014-04-16 11:57:47.635 -0400 I [DispatcherThread] received seqid=113 /fxtrade/fxe/FXEResponse sendtime=1397663867 uniqueMsgId=CRgamecs01_135341867622146
+2014-04-16 11:57:47.737 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663867
+2014-04-16 11:57:47.738 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663867
+2014-04-16 11:57:48.638 -0400 I [main] sent seqid=114 /fxtrade/fxe/CloseTradeRequest at 1397663868 in 1 ms
+2014-04-16 11:57:48.660 -0400 I [DispatcherThread] received seqid=114 /fxtrade/fxe/FXEResponse sendtime=1397663868 uniqueMsgId=CRgamecs01_135341868645677
+2014-04-16 11:57:48.761 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663868
+2014-04-16 11:57:48.762 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663868
+2014-04-16 11:57:49.072 -0400 I [KeepAliveThread] sent seqid=115 /fxtrade/cr/PingRequest at 1397663869 in 0 ms
+2014-04-16 11:57:49.104 -0400 I [DispatcherThread] received seqid=115 /fxtrade/cr/PingReply sendtime=1397663869 uniqueMsgId=CRgamecs01_135341869094772
+2014-04-16 11:57:49.663 -0400 I [main] sent seqid=116 /fxtrade/fxe/MarketOrderRequest at 1397663869 in 1 ms
+2014-04-16 11:57:49.681 -0400 I [DispatcherThread] received seqid=116 /fxtrade/fxe/FXEResponse sendtime=1397663869 uniqueMsgId=CRgamecs01_135341869668655
+2014-04-16 11:57:49.782 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663869
+2014-04-16 11:57:49.782 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663869
+2014-04-16 11:57:50.684 -0400 I [main] sent seqid=117 /fxtrade/fxe/CloseTradeRequest at 1397663870 in 1 ms
+2014-04-16 11:57:50.712 -0400 I [DispatcherThread] received seqid=117 /fxtrade/fxe/FXEResponse sendtime=1397663870 uniqueMsgId=CRgamecs01_135341870699005
+2014-04-16 11:57:50.815 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663870
+2014-04-16 11:57:50.816 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663870
+2014-04-16 11:57:51.713 -0400 I [main] sent seqid=118 /fxtrade/fxe/MarketOrderRequest at 1397663871 in 0 ms
+2014-04-16 11:57:51.733 -0400 I [DispatcherThread] received seqid=118 /fxtrade/fxe/FXEResponse sendtime=1397663871 uniqueMsgId=CRgamecs01_135341871719624
+2014-04-16 11:57:51.833 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663871
+2014-04-16 11:57:51.834 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663871
+2014-04-16 11:57:52.105 -0400 I [KeepAliveThread] sent seqid=119 /fxtrade/cr/PingRequest at 1397663872 in 1 ms
+2014-04-16 11:57:52.122 -0400 I [DispatcherThread] received seqid=119 /fxtrade/cr/PingReply sendtime=1397663872 uniqueMsgId=CRgamecs01_135341872112080
+2014-04-16 11:57:52.736 -0400 I [main] sent seqid=120 /fxtrade/fxe/CloseTradeRequest at 1397663872 in 1 ms
+2014-04-16 11:57:52.757 -0400 I [DispatcherThread] received seqid=120 /fxtrade/fxe/FXEResponse sendtime=1397663872 uniqueMsgId=CRgamecs01_135341872743380
+2014-04-16 11:57:52.857 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663872
+2014-04-16 11:57:52.858 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663872
+2014-04-16 11:57:53.759 -0400 I [main] sent seqid=121 /fxtrade/fxe/MarketOrderRequest at 1397663873 in 0 ms
+2014-04-16 11:57:53.780 -0400 I [DispatcherThread] received seqid=121 /fxtrade/fxe/FXEResponse sendtime=1397663873 uniqueMsgId=CRgamecs01_135341873766508
+2014-04-16 11:57:53.881 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663873
+2014-04-16 11:57:53.881 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663873
+2014-04-16 11:57:54.783 -0400 I [main] sent seqid=122 /fxtrade/fxe/CloseTradeRequest at 1397663874 in 1 ms
+2014-04-16 11:57:54.803 -0400 I [DispatcherThread] received seqid=122 /fxtrade/fxe/FXEResponse sendtime=1397663874 uniqueMsgId=CRgamecs01_135341874789280
+2014-04-16 11:57:54.906 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663874
+2014-04-16 11:57:54.907 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663874
+2014-04-16 11:57:55.123 -0400 I [KeepAliveThread] sent seqid=123 /fxtrade/cr/PingRequest at 1397663875 in 0 ms
+2014-04-16 11:57:55.152 -0400 I [DispatcherThread] received seqid=123 /fxtrade/cr/PingReply sendtime=1397663875 uniqueMsgId=CRgamecs01_135341875139917
+2014-04-16 11:57:55.805 -0400 I [main] sent seqid=124 /fxtrade/fxe/MarketOrderRequest at 1397663875 in 1 ms
+2014-04-16 11:57:55.826 -0400 I [DispatcherThread] received seqid=124 /fxtrade/fxe/FXEResponse sendtime=1397663875 uniqueMsgId=CRgamecs01_135341875810909
+2014-04-16 11:57:55.925 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663875
+2014-04-16 11:57:55.926 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663875
+2014-04-16 11:57:56.830 -0400 I [main] sent seqid=125 /fxtrade/fxe/CloseTradeRequest at 1397663876 in 0 ms
+2014-04-16 11:57:56.852 -0400 I [DispatcherThread] received seqid=125 /fxtrade/fxe/FXEResponse sendtime=1397663876 uniqueMsgId=CRgamecs01_135341876836645
+2014-04-16 11:57:56.952 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663876
+2014-04-16 11:57:56.953 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663876
+2014-04-16 11:57:57.854 -0400 I [main] sent seqid=126 /fxtrade/fxe/MarketOrderRequest at 1397663877 in 1 ms
+2014-04-16 11:57:57.879 -0400 I [DispatcherThread] received seqid=126 /fxtrade/fxe/FXEResponse sendtime=1397663877 uniqueMsgId=CRgamecs01_135341877866201
+2014-04-16 11:57:57.979 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663877
+2014-04-16 11:57:57.980 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663877
+2014-04-16 11:57:58.153 -0400 I [KeepAliveThread] sent seqid=127 /fxtrade/cr/PingRequest at 1397663878 in 0 ms
+2014-04-16 11:57:58.173 -0400 I [DispatcherThread] received seqid=127 /fxtrade/cr/PingReply sendtime=1397663878 uniqueMsgId=CRgamecs01_135341878164415
+2014-04-16 11:57:58.882 -0400 I [main] sent seqid=128 /fxtrade/fxe/CloseTradeRequest at 1397663878 in 1 ms
+2014-04-16 11:57:58.901 -0400 I [DispatcherThread] received seqid=128 /fxtrade/fxe/FXEResponse sendtime=1397663878 uniqueMsgId=CRgamecs01_135341878888193
+2014-04-16 11:57:59.000 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663878
+2014-04-16 11:57:59.001 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663878
+2014-04-16 11:57:59.902 -0400 I [main] sent seqid=129 /fxtrade/fxe/MarketOrderRequest at 1397663879 in 0 ms
+2014-04-16 11:57:59.924 -0400 I [DispatcherThread] received seqid=129 /fxtrade/fxe/FXEResponse sendtime=1397663879 uniqueMsgId=CRgamecs01_135341879908624
+2014-04-16 11:58:00.023 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663879
+2014-04-16 11:58:00.023 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663879
+2014-04-16 11:58:00.926 -0400 I [main] sent seqid=130 /fxtrade/fxe/CloseTradeRequest at 1397663880 in 0 ms
+2014-04-16 11:58:00.947 -0400 I [DispatcherThread] received seqid=130 /fxtrade/fxe/FXEResponse sendtime=1397663880 uniqueMsgId=CRgamecs01_135341880932412
+2014-04-16 11:58:01.047 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663880
+2014-04-16 11:58:01.047 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663880
+2014-04-16 11:58:01.174 -0400 I [KeepAliveThread] sent seqid=131 /fxtrade/cr/PingRequest at 1397663881 in 0 ms
+2014-04-16 11:58:01.191 -0400 I [DispatcherThread] received seqid=131 /fxtrade/cr/PingReply sendtime=1397663881 uniqueMsgId=CRgamecs01_135341881180681
+2014-04-16 11:58:01.949 -0400 I [main] sent seqid=132 /fxtrade/fxe/MarketOrderRequest at 1397663881 in 1 ms
+2014-04-16 11:58:01.971 -0400 I [DispatcherThread] received seqid=132 /fxtrade/fxe/FXEResponse sendtime=1397663881 uniqueMsgId=CRgamecs01_135341881956075
+2014-04-16 11:58:02.070 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663881
+2014-04-16 11:58:02.071 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663881
+2014-04-16 11:58:02.973 -0400 I [main] sent seqid=133 /fxtrade/fxe/CloseTradeRequest at 1397663882 in 0 ms
+2014-04-16 11:58:03.005 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663882
+2014-04-16 11:58:03.106 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663882
+2014-04-16 11:58:03.106 -0400 I [DispatcherThread] received seqid=133 /fxtrade/fxe/FXEResponse sendtime=1397663882 uniqueMsgId=CRgamecs01_135341882991759
+2014-04-16 11:58:04.108 -0400 I [main] sent seqid=134 /fxtrade/fxe/MarketOrderRequest at 1397663884 in 0 ms
+2014-04-16 11:58:04.133 -0400 I [DispatcherThread] received seqid=134 /fxtrade/fxe/FXEResponse sendtime=1397663884 uniqueMsgId=CRgamecs01_135341884120267
+2014-04-16 11:58:04.192 -0400 I [KeepAliveThread] sent seqid=135 /fxtrade/cr/PingRequest at 1397663884 in 1 ms
+2014-04-16 11:58:04.207 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663884
+2014-04-16 11:58:04.208 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663884
+2014-04-16 11:58:04.313 -0400 I [DispatcherThread] received seqid=135 /fxtrade/cr/PingReply sendtime=1397663884 uniqueMsgId=CRgamecs01_135341884198343
+2014-04-16 11:58:05.135 -0400 I [main] sent seqid=136 /fxtrade/fxe/CloseTradeRequest at 1397663885 in 0 ms
+2014-04-16 11:58:05.156 -0400 I [DispatcherThread] received seqid=136 /fxtrade/fxe/FXEResponse sendtime=1397663885 uniqueMsgId=CRgamecs01_135341885141274
+2014-04-16 11:58:05.254 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663885
+2014-04-16 11:58:05.255 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663885
+2014-04-16 11:58:06.158 -0400 I [main] sent seqid=137 /fxtrade/fxe/MarketOrderRequest at 1397663886 in 1 ms
+2014-04-16 11:58:06.178 -0400 I [DispatcherThread] received seqid=137 /fxtrade/fxe/FXEResponse sendtime=1397663886 uniqueMsgId=CRgamecs01_135341886164150
+2014-04-16 11:58:06.279 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663886
+2014-04-16 11:58:06.279 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663886
+2014-04-16 11:58:07.180 -0400 I [main] sent seqid=138 /fxtrade/fxe/CloseTradeRequest at 1397663887 in 0 ms
+2014-04-16 11:58:07.199 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663887
+2014-04-16 11:58:07.299 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663887
+2014-04-16 11:58:07.299 -0400 I [DispatcherThread] received seqid=138 /fxtrade/fxe/FXEResponse sendtime=1397663887 uniqueMsgId=CRgamecs01_135341887186455
+2014-04-16 11:58:07.314 -0400 I [KeepAliveThread] sent seqid=139 /fxtrade/cr/PingRequest at 1397663887 in 0 ms
+2014-04-16 11:58:07.330 -0400 I [DispatcherThread] received seqid=139 /fxtrade/cr/PingReply sendtime=1397663887 uniqueMsgId=CRgamecs01_135341887320111
+2014-04-16 11:58:08.301 -0400 I [main] sent seqid=140 /fxtrade/fxe/MarketOrderRequest at 1397663888 in 0 ms
+2014-04-16 11:58:08.321 -0400 I [DispatcherThread] received seqid=140 /fxtrade/fxe/FXEResponse sendtime=1397663888 uniqueMsgId=CRgamecs01_135341888307409
+2014-04-16 11:58:08.422 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663888
+2014-04-16 11:58:08.422 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663888
+2014-04-16 11:58:09.324 -0400 I [main] sent seqid=141 /fxtrade/fxe/CloseTradeRequest at 1397663889 in 1 ms
+2014-04-16 11:58:09.343 -0400 I [DispatcherThread] received seqid=141 /fxtrade/fxe/FXEResponse sendtime=1397663889 uniqueMsgId=CRgamecs01_135341889330335
+2014-04-16 11:58:09.444 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663889
+2014-04-16 11:58:09.444 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663889
+2014-04-16 11:58:10.331 -0400 I [KeepAliveThread] sent seqid=142 /fxtrade/cr/PingRequest at 1397663890 in 0 ms
+2014-04-16 11:58:10.345 -0400 I [main] sent seqid=143 /fxtrade/fxe/MarketOrderRequest at 1397663890 in 0 ms
+2014-04-16 11:58:10.346 -0400 I [DispatcherThread] received seqid=142 /fxtrade/cr/PingReply sendtime=1397663890 uniqueMsgId=CRgamecs01_135341890337299
+2014-04-16 11:58:10.367 -0400 I [DispatcherThread] received seqid=143 /fxtrade/fxe/FXEResponse sendtime=1397663890 uniqueMsgId=CRgamecs01_135341890352079
+2014-04-16 11:58:10.468 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663890
+2014-04-16 11:58:10.469 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663890
+2014-04-16 11:58:11.369 -0400 I [main] sent seqid=144 /fxtrade/fxe/CloseTradeRequest at 1397663891 in 0 ms
+2014-04-16 11:58:11.392 -0400 I [DispatcherThread] received seqid=144 /fxtrade/fxe/FXEResponse sendtime=1397663891 uniqueMsgId=CRgamecs01_135341891380236
+2014-04-16 11:58:11.396 -0400 I [main] sent seqid=145 /fxtrade/fxe/OpenTradesRequest at 1397663891 in 1 ms
+2014-04-16 11:58:11.411 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/OpenTradeNotification sendtime=1397663891
+2014-04-16 11:58:11.412 -0400 I [DispatcherThread] received seqid=0 /fxtrade/notification/account/TransactionNotification sendtime=1397663891
+2014-04-16 11:58:11.511 -0400 I [DispatcherThread] received seqid=145 /fxtrade/fxe/FXEResponse sendtime=1397663891 uniqueMsgId=CRgamecs01_135341891402267
+2014-04-16 11:58:12.394 -0400 I [main] sent seqid=146 /fxtrade/fxe/BulkCloseRequest at 1397663892 in 0 ms
+2014-04-16 11:58:12.411 -0400 I [DispatcherThread] received seqid=146 /fxtrade/fxe/FXEResponse sendtime=1397663892 uniqueMsgId=CRgamecs01_135341892400769
+]0;wwu@wwu-ud:~/api/performance/api-performance-test/non-streaming/OMPwwu@wwu-ud:~/api/performance/api-performance-test/non-streaming/OMP$ exit
+exit
+
+Script done on Wed 16 Apr 2014 11:58:18 AM EDT
